@@ -1,0 +1,52 @@
+/* Overwrite the css ofbootstrap  */
+body{
+	background-color: #E2F0D9;
+}
+.side-menu{
+	border:1px solid black;
+	text-align: center;
+	padding: 10px;
+}
+.main-content{
+	border:1px solid black;
+	padding: 10px;
+}
+.col-md-12{
+	text-align: center;
+	background-color: #A9D18E;
+}
+/* Default css*/
+.links{
+	border-bottom: 1px dotted #5DBFB5;
+	float: right;
+}
+
+/* Registration and Login form css*/
+.form-section{
+	width: 80%;
+	border:1px solid black;
+	border-radius: 10px;
+	margin:0 auto;
+	padding: 20px;
+}
+
+
+.form-section h4{
+	text-align: center;
+	padding: 10px;
+	border-bottom: 1px solid black;
+}
+
+.form-section input,label{
+	width: 100%;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.form-section label{
+	margin-bottom: 5px;
+}
+.fieldset-confirm{
+	position: relative;
+	top: 60px;
+}

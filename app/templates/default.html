@@ -1,0 +1,11 @@
+<h3>{{ads.numPages}}</h3>
+<ul id="ul" ng-repeat="ad in ads.ads">
+	<li>
+	<h3>{{ad.title}}</h3>
+	<date>{{ad.date | date:'dd-MMM-yyyy'}}</date>
+	<p>{{ad.text}}</p>
+	<p>Name<span>{{}}</span></p>
+	<p>Email:<span>{{}}</span></p>
+	<p>Phone:<span>{{}}</span></p>
+	</li>
+</ul>
