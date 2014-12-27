@@ -1,13 +1,31 @@
-<div class="form-section">
-	<h4 >Login</h4>
-	<form>
-	<fieldset>
-		<label for id="username">Username:</label>
-		<input id="username" type="text" required/>
-		<label for id="password">Password:</label>
-		<input id="password" type="password" required/>
-		<button type="Submit">Login</button>
-		<a href="#/register" class="links">Register</a>
-		</fieldset>
-	</form>
-</div>
+<div class="row">
+          <div class="col-lg-6">
+            <div class="well bs-component">
+              <form class="form-horizontal">
+                <fieldset>
+                  <legend>Login</legend>
+                  <div class="form-group">
+                    <label for="username" class="col-lg-2 control-label">Username</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="username" placeholder="Username" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-primary">Login</button>
+                      <button class="btn btn-default">Cancel</button>
+                      <a class="text-info" href="#/register">Register</a>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+          </div>
+        </div>
+     </div>

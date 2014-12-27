@@ -1,32 +1,71 @@
-<div class="form-section">
-	<h4 >User Registration</h4>
-	<form class="row">
-		<fieldset class="col-md-6">
-			<label for="username">Username:</label>
-			<input id="username" type="text" required/>
+<div class="row">
+          <div class="col-lg-12">
+            <div class="well bs-component">
+              <form class="form-horizontal row">
+                <fieldset class="col-lg-5">
+                  <legend>User Registration</legend>
+                  <div class="form-group">
+                    <label for="username" class="col-lg-2 control-label">Username</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="username" placeholder="Username" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+                    <div class="col-lg-10">
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                    </div>
+                  </div>
 
-			<label for="password">Password:</label>
-			<input id="password" type="password" required/>
+                  <div class="form-group">
+                    <label for="name" class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone" class="col-lg-2 control-label">Phone</label>
+                    <div class="col-lg-10">
+                      <input type="tel" class="form-control" id="phone" placeholder="Name">
+                    </div>
+                  </div>
 
-			<label for="name">Name:</label>
-			<input id="name" type="text" required/>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-primary">Register</button>
+                       <button class="btn btn-default">Cancel</button>
+                    </div>
+                  </div>
+                </fieldset>
 
-			<label for="Phone">Phone:</label>
-			<input id="Phone" type="tel" required/>
+                <fieldset class="col-lg-7 form-fieldset">
+                  <div class="form-group">
+                    <label for="passwordConf" class="col-lg-3 control-label">Confirm Password</label>
+                    <div class="col-lg-9">
+                      <input type="password" class="form-control" id="passwordConf" placeholder="Password" required>
+                    </div>
+                  </div>
 
-			<button type="Submit">Register</button>
-		</fieldset>
-		<fieldset class="col-md-6 fieldset-confirm">
-			<label for="passwordConf">Confirm password:</label>
-			<input id="passwordConf" type="password" required/>
+                  <div class="form-group">
+                    <label for="email" class="col-lg-3 control-label">Email</label>
+                    <div class="col-lg-9">
+                      <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="town" class="col-lg-3 control-label">Town</label>
+                    <div class="col-lg-9">
+                      <input type="tel" class="form-control" id="town" placeholder="Town">
+                    </div>
+                  </div>
 
-			<label for="email">Email:</label>
-			<input id="email" type="email" required/>
-
-			<label for="town">Town:</label>
-			<input id="town" type="text" required/>
-
-			<a href="#/login" class="links">Login</a>
-		</fieldset>
-	</form>
-</div>
+                  <div class="form-group">
+                    <div class="col-lg-9 col-lg-offset-3">
+                       <a class="text-info" href="#/login">Login</a>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+          </div>
+     </div>
+   </div>

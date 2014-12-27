@@ -10,42 +10,35 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="app.css">
+   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body ng-app="myApp" class="container">
-
-<header  class="col-md-12">
-<h1>Adds - Home</h1><!-- ToDO has to change -->
-</header>
-<aside class="col-md-3 side-menu">
-  <h4>To publish a new ad, please login</h4>
-  <ul class="nav nav-pills nav-stacked">
-   <li><a  href="#/login">Login</a></li>
-    <li><a  href="#/register">Register</a></li>
-  </ul>
-</aside>
-<main  class="col-md-6 main-content" ng-view>
+<body ng-app="myApp" >
+<div class="navbar navbar-default navbar-top">
+      <div class="container">
+        <div class="navbar-header">
+           <a class="navbar-brand" href="#">SoftUni Ad Project</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav navbar-right">
+             <li>
+              <a href="#/login">Login</a>
+            </li>
+            <li>
+               <a href="#/register">Register</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>
+<main  class="container" ng-view>
 </main>
-<aside class="col-md-3 side-menu">
-<h4>Categories</h4>
-</aside>
-<footer class="footer col-md-12">
+<footer class="footer ">
   <h5>All rights are not reserved</h5>
 </footer>
 
-  <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
-
-<!--   <div ng-view></div> -->
-
-
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="bower_components/bootstrap/js/bootstrap.js"></script>
   <script src="bower_components/angular/angular.js"></script>

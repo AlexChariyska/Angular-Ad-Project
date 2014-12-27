@@ -1,0 +1,11 @@
+.form-fieldset{
+position: relative;
+top:103px;
+}
+.a-info{
+	width: 85%;
+	float: right;
+	display: inline-block;
+	background-color: #4FBD4F;
+	padding: 5px;
+}
