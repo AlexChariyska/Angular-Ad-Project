@@ -1,42 +1,55 @@
 
-<div class="row">
-	<div class="col-lg-9">
-		<div class="row">
+<div class="container well">
+	<div class="col-lg-10">
 			<ul id="ul" ng-repeat="ad in ads.ads |  filter:filterByCategory |  filter:filterByTown">
-				<li class="col-lg-12 container well">
-				<h3 class="pull-left">{{ad.title}}</h3>
-				<date  class="pull-right clearfix">{{ad.date | date:'dd-MMM-yyyy'}}</date>
+				<li class="row">
+				<div class="col-lg-12">
+					<h3 class="pull-left">{{ad.title}}</h3>
+					<date  class="pull-right">{{ad.date | date:'dd-MMM-yyyy'}}</date>
+				</div>
 				<div class="row">
-				<div class="image-container">
-				<img ng-src="{{ad.imageDataUrl}}">
-				</div>
-					<p>{{ad.text}}</p>
-					<p class="clearfix">Name: <span class="a-info">{{ad.ownerName}}</span></p>
-					<p class="clearfix">Email: <span class="a-info">{{ad.ownerEmail}}</span></p>
-					<p class="clearfix">Phone: <span class="a-info">{{ad.ownerPhone}}</span></p>
-				</div>
+
+					<div class="col-lg-3">
+						<img src="img\300px-No_image_available.svg.png" class="img-thumbnail" ng-src="{{ad.imageDataUrl}}">
+					</div>
+					<div class="col-lg-9">
+						 <div class="panel panel-default">
+						  <div class="panel-body">
+						    {{ad.text}}
+						  </div>
+						  </div>
+						  <div class="well well-sm">
+						   <strong>Name: </strong> {{ad.ownerName}}
+						  </div>
+
+
+
+						  <div class="well well-sm">
+						   <strong>Email: </strong> {{ad.ownerEmail}}
+						  </div>
+	
+						  
+						  <div class="well well-sm">
+						   <strong>Phone: </strong> {{ad.ownerPhone}}
+						</div>
+				  </div>
 				</li>
 			</ul>
-		</div>
     </div>
 
-   <div class="col-lg-2 col-md-offset-1 container well">
-		<h4>Categories</h4>
-		<select class="form-control" ng-model="filterByCategory.category">
-		<option value="">All</option>
-			<option ng-repeat="category in categories" value="{{category.name}}" >
-				{{category.name}}
-			</option>
-		</select>
-
-		<h4>Towns</h4>
-		<select class="form-control" ng-model="filterByTown.town">
-			<option value="">All</option>
-			<option ng-repeat="town in towns" value="{{town.name}}" >
-				{{town.name}}
-			</option>
-		</select>
-     </div>
+   <div class="col-lg-2 ">
+   <div class="list-group" ng-model="filterByCategory">
+   <h3>Categories</h3>
+		<a href="#" class="list-group-item active" value="">All</a>
+		<a href="#" class="list-group-item" ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
+		</a>
+	</div>
+   <div class="list-group" ng-model="filterByTown">
+     <h3>Towns</h3>
+		<a href="#" class="list-group-item active" value="">All</a>
+		<a href="#" class="list-group-item" ng-repeat="town in towns" value="{{town.id}}">{{town.name}}
+		</a>
+  </div>
 </div>
 
 

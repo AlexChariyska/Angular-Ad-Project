@@ -2,7 +2,7 @@ app.factory('adsData', function adsData($http) {
 	function getAllAds(success, error) {
 		$http({
 			method: 'GET',
-			url: 'http://softuni-ads.azurewebsites.net/api/ads' // to change pages
+			url: 'http://softuni-ads.azurewebsites.net/api/ads?StartPage=1&PageSize=5' // to change pages
 			// headers: {}
 			// data: {}
 		})

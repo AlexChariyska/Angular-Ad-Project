@@ -12,6 +12,6 @@ var app = angular.module('adApp', [ 'ngRoute'])
 	}).when('/', {
 		templateUrl: 'templates/default.html',
 		controller: 'AdsController'
-	})
+	}).otherwise({redirectTo:'/'})
 });
 
