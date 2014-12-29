@@ -1,19 +1,17 @@
 'use strict';
 
-var controllersApp = angular.module('ControllersApp', []);
-
-var app = angular.module('myApp', [ 'ngRoute',
-  'ControllersApp'])
+var app = angular.module('adApp', [ 'ngRoute'])
 .config(function ($routeProvider) {
 	$routeProvider
 	.when('/login', {
 		templateUrl: 'templates/login.html'
 	})
 	.when('/register', {
-		templateUrl: 'templates/register.html'
+		templateUrl: 'templates/register.html',	
+		controller: 'AdsController'
 	}).when('/', {
 		templateUrl: 'templates/default.html',
-		controller: 'ListAds'
+		controller: 'AdsController'
 	})
 });
 

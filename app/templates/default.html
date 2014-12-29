@@ -1,22 +1,26 @@
 
 <div class="row">
 	<div class="col-lg-9">
-	<div class="row">
-		<ul id="ul" ng-repeat="ad in ads.ads |  filter:filterByCategory |  filter:filterByTown">
-			<li class="col-lg-6">
-			<h3>{{ad.title}}</h3>
-			<h3>{{ad.town}}</h3>
-			<date>{{ad.date | date:'dd-MMM-yyyy'}}</date>
-			<p>{{ad.text}}</p>
-			<p class="clearfix">Name: <span class="a-info">{{ad.ownerName}}</span></p>
-			<p class="clearfix">Email: <span class="a-info">{{ad.ownerEmail}}</span></p>
-			<p class="clearfix">Phone: <span class="a-info">{{ad.ownerPhone}}</span></p>
-			</li>
-		</ul>
+		<div class="row">
+			<ul id="ul" ng-repeat="ad in ads.ads |  filter:filterByCategory |  filter:filterByTown">
+				<li class="col-lg-12 container well">
+				<h3 class="pull-left">{{ad.title}}</h3>
+				<date  class="pull-right clearfix">{{ad.date | date:'dd-MMM-yyyy'}}</date>
+				<div class="row">
+				<div class="image-container">
+				<img ng-src="{{ad.imageDataUrl}}">
+				</div>
+					<p>{{ad.text}}</p>
+					<p class="clearfix">Name: <span class="a-info">{{ad.ownerName}}</span></p>
+					<p class="clearfix">Email: <span class="a-info">{{ad.ownerEmail}}</span></p>
+					<p class="clearfix">Phone: <span class="a-info">{{ad.ownerPhone}}</span></p>
+				</div>
+				</li>
+			</ul>
 		</div>
-	</div>
-	<div class="col-lg-2 col-md-offset-1">
-	<div ng-controller="GetAllCategories">
+    </div>
+
+   <div class="col-lg-2 col-md-offset-1 container well">
 		<h4>Categories</h4>
 		<select class="form-control" ng-model="filterByCategory.category">
 		<option value="">All</option>
@@ -24,17 +28,15 @@
 				{{category.name}}
 			</option>
 		</select>
-	</div>
-	<div ng-controller="GetAllTown">
+
 		<h4>Towns</h4>
 		<select class="form-control" ng-model="filterByTown.town">
-		<option value="">All</option>
+			<option value="">All</option>
 			<option ng-repeat="town in towns" value="{{town.name}}" >
 				{{town.name}}
 			</option>
 		</select>
-	</div>
-	</div>
+     </div>
 </div>
 
 

@@ -9,3 +9,6 @@ top:103px;
 	background-color: #4FBD4F;
 	padding: 5px;
 }
+ul li{
+	list-style:none;
+}
