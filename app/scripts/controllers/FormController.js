@@ -45,9 +45,6 @@ app.controller('FormController',function FormController($scope, adsData, $resour
             });
 	};
 
-
-
-	$scope.register=function(credentials){
                 var ad={"username": "user13",
   "password": "user13",
   "confirmPassword": "user13",
@@ -56,9 +53,9 @@ app.controller('FormController',function FormController($scope, adsData, $resour
   "phone": "123-5896-55",
   "townId": 1};
 
-
-
-        adsData.register(credentials,
+	$scope.register=function(credentials){
+     var newObj = JSON.stringify(credentials);
+        adsData.register(newObj,
             function (data, status, headers, config) {
                 console.log(data);
             }, 
