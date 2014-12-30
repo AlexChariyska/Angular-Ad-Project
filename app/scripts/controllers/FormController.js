@@ -1,4 +1,4 @@
-app.controller('FormController',function FormController($scope, adsData,$resource, $http){
+app.controller('FormController',function FormController($scope, adsData,$resource, $http, $location){
 
     adsData.getAllTown(
     function (data, status, headers, config) {
@@ -9,13 +9,35 @@ app.controller('FormController',function FormController($scope, adsData,$resourc
     });
 
 
+
+
+// Alert messages
+    $scope.error = function(value) {
+              return false;
+     };
+    $scope.success = function(value) {
+              return false;
+     };
+
+
 	$scope.login=function(data){
     $http.post('http://softuni-ads.azurewebsites.net/api/user/login', data).
       success(function(data, status, headers, config) {
       console.log(data);
+
+       $scope.success = function(value) {
+              return true;
+        };
+        
+       setTimeout(function(){ debugger;
+        $location='/user/home';
+         $location.path( "/user/home" );
+        }, 2000); 
       }).
       error(function(data, status, headers, config) {
-      alert('no')
+        $scope.isTrue = function(value) {
+              return true;
+        };
       });
 	}
 	$scope.register=function(){
@@ -30,5 +52,8 @@ app.controller('FormController',function FormController($scope, adsData,$resourc
 	
     $scope.reset = function() {
     $scope.user = angular.copy($scope.master);
+
+
+
    };
 })
