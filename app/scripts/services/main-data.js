@@ -1,10 +1,12 @@
-app.factory('adsData', function adsData($http) {
-	function getAllAds(success, error) {
+app.factory('adsData', function adsData($resource,$http) {
+
+
+	function makeRequest(method, url,/*headers, data,*/ success, error) {
 		$http({
-			method: 'GET',
-			url: 'http://softuni-ads.azurewebsites.net/api/ads?StartPage=1&PageSize=5' // to change pages
-			// headers: {}
-			// data: {}
+			method: method,
+			url: url 
+		/*	 headers: headers,
+			 data: data*/
 		})
 		.success(function (data, status, headers, config) {
 			success(data, status, headers(), config);
@@ -13,32 +15,20 @@ app.factory('adsData', function adsData($http) {
 			error(data, status, headers(), config);
 		});
 	}
+
+
+
+
+	function getAllAds(success, error) {
+	 return makeRequest("GET",'http://softuni-ads.azurewebsites.net/api/ads?StartPage=1&PageSize=5',success, error);
+	};
 
 	function getAllTown(success, error) {
-		$http({
-			method: 'GET',
-			url: 'http://softuni-ads.azurewebsites.net/Api/Towns' 
-		})
-		.success(function (data, status, headers, config) {
-			success(data, status, headers(), config);
-		})
-		.error(function (data, status, headers, config) {
-			error(data, status, headers(), config);
-		});
-	}
-
+	 return makeRequest("GET",'http://softuni-ads.azurewebsites.net/Api/Towns',success, error);
+	};
 	function getAllCategories(success, error) {
-		$http({
-			method: 'GET',
-			url: 'http://softuni-ads.azurewebsites.net/api/categories'
-		})
-		.success(function (data, status, headers, config) {
-			success(data, status, headers(), config);
-		})
-		.error(function (data, status, headers, config) {
-			error(data, status, headers(), config);
-		});
-	}
+	 return makeRequest("GET",'http://softuni-ads.azurewebsites.net/api/categories',success, error);
+	};
 
 	return {
 		getAllAds: getAllAds,

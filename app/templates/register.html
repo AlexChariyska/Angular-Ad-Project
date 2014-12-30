@@ -1,44 +1,48 @@
 <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12 col-sm-12">
+        <!--     <div class="alert alert-dismissable alert-danger" ng-show ="registerForm.">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Invalid register. Change a few things up and try submitting again.
+        </div> -->
             <div class="well bs-component">
-              <form class="form-horizontal row">
-                <fieldset class="col-lg-5">
+              <form class="form-horizontal row" name="registerForm">
+                <fieldset class="col-lg-5 col-sm-6">
                   <legend>User Registration</legend>
                   <div class="form-group">
                     <label for="username" class="col-lg-2 control-label">Username</label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="username" placeholder="Username" ng-model="newAd.username" required>
+                      <input type="text" class="form-control" id="username" placeholder="Username" name="username" ng-model="user.username" required>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                     <div class="col-lg-10">
-                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="newAd.password" required>
+                      <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" ng-model="user.password" ng-minlength=2 ng-maxlength=100 required>
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="name" class="col-lg-2 control-label">Name</label>
                     <div class="col-lg-10">
-                      <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newAd.ownerName">
+                      <input type="text" class="form-control" id="name" placeholder="Name" ng-model="user.ownerName">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="phone" class="col-lg-2 control-label">Phone</label>
                     <div class="col-lg-10">
-                      <input type="tel" class="form-control" id="phone" placeholder="Phone" ng-model="newAd.ownerPhone">
+                      <input type="tel" class="form-control" id="phone" placeholder="Phone" ng-model="user.ownerPhone">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <div class="col-lg-10 col-lg-offset-2">
                       <button type="submit" class="btn btn-primary">Register</button>
-                       <button class="btn btn-default" value="cancel">Cancel</button>
+                      <button class="btn btn-default" ng-click="reset()">Cancel</button>
                     </div>
                   </div>
                 </fieldset>
 
-                <fieldset class="col-lg-7 form-fieldset">
+                <fieldset class="col-lg-7 col-sm-6 form-fieldset">
                   <div class="form-group">
                     <label for="passwordConf" class="col-lg-3 control-label">Confirm Password</label>
                     <div class="col-lg-9">
@@ -49,13 +53,13 @@
                   <div class="form-group">
                     <label for="email" class="col-lg-3 control-label">Email</label>
                     <div class="col-lg-9">
-                      <input type="text" class="form-control" id="email" placeholder="Email" ng-model="newAd.ownerEmail">
+                      <input type="text" class="form-control" id="email" placeholder="Email" ng-model="user.ownerEmail">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="town" class="col-lg-3 control-label">Town</label>
                     <div class="col-lg-9">
-                      <select class="form-control" id="town" ng-model="newAd.town">
+                      <select class="form-control" id="town" ng-model="user.townId">
                           <option value="">-</option>
                           <option ng-repeat="town in towns" value="{{town.name}}" >
                             {{town.name}}
