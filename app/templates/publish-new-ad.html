@@ -44,14 +44,14 @@
                    </div>
                    <div class="form-group">
                     <label class="col-lg-2 control-label">Category:</label>
-                   <select class="form-control" id="category" ng-model="ad.categoryId">
+                   <select class="form-control" id="ad-category" ng-model="ad.categoryId">
                           <option value="">-</option>
                           <option ng-repeat="category in categories"value="{{category.id}}">{{category.name}}</option>
                       </select>
                     </div>
                    <div class="form-group">
                     <label class="col-lg-2 control-label">Towns:</label>
-                   <select class="form-control" id="town" ng-model="ad.townId">
+                   <select class="form-control" id="ad-town" ng-model="ad.townId">
                           <option value="">-</option>
                           <option ng-repeat="town in towns" value="{{town.name}}" >
                             {{town.name}}

@@ -1,4 +1,4 @@
-app.controller('FormController',function FormController($scope, adsData, $resource, $http, $location){
+app.controller('FormController',function FormController($scope, adsData, $resource, $http, $location,$timeout){
 
     adsData.getAllTown(
     function (data, status, headers, config) {
@@ -26,14 +26,16 @@ app.controller('FormController',function FormController($scope, adsData, $resour
               return false;
      };
 
-
 	$scope.login=function(ad){
         adsData.login(ad,
             function (data, status, headers, config) {
                 console.log(data);
+
                  $scope.success = function(value) {
                     return true;
                  };
+                $timeout(function(){$location.path('/user/home');}, 2000);
+
             }, 
             function (error, status, headers, config) {
                 $scope.error = function(value) {
@@ -46,6 +48,16 @@ app.controller('FormController',function FormController($scope, adsData, $resour
 
 
 	$scope.register=function(credentials){
+                var ad={"username": "user13",
+  "password": "user13",
+  "confirmPassword": "user13",
+  "name": "user13",
+  "email": "user13@abv.bg",
+  "phone": "123-5896-55",
+  "townId": 1};
+
+
+
         adsData.register(credentials,
             function (data, status, headers, config) {
                 console.log(data);

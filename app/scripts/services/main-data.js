@@ -38,9 +38,9 @@ app.factory('adsData', function adsData($resource,$http) {
 	function login(data,success, error) {
 		return makeRequest("POST",'http://softuni-ads.azurewebsites.net/api/user/login',$http.defaults.headers, data,success, error);
 	}; 
-	
+
 	function register(data,success, error) {
-		return makeRequest("POST",': http://softuni-ads.azurewebsites.net/api/user/register',$http.defaults.headers, data,success, error);
+		return makeRequest("POST",'http://softuni-ads.azurewebsites.net/api/user/register',{}, data,success, error);
 	}; 
 	return {
 		getAllAds: getAllAds,
