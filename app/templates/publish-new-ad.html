@@ -1,0 +1,71 @@
+<div class="row">
+         <div class="alert alert-dismissable alert-danger" ng-show='error(ev)'>
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>Invalid ad. Change a few things up and try submitting again.
+        </div> 
+        <div class="alert alert-dismissable alert-success" ng-show='success(ev)'>
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong>Well done!</strong> You have successfully added new ad.s
+        </div>
+          <div class="col-lg-6 col-sm-12 col-lg-offset-3">
+            <div class="well bs-component">
+              <form class="form-horizontal" name="newAdForm" ng-submit="addAd(ad)" novalidate>
+                <fieldset>
+                  <legend>Publish new ad</legend>
+                <div class="row">
+                 <div class="col-lg-6">
+                  <div class="form-group ">
+                    <label for="title" class="col-lg-2 control-label">Title</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" id="title" name="title" placeholder="Title"
+                       ng-model="ad.title" required>
+                     <span ng-show="newAdForm.username.$dirty && newAdForm.username.$error.required" class="text-danger">Title is required</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="text" class="col-lg-2 control-label">Text</label>
+                    <div class="col-lg-10">
+                      <textarea type="text" class="form-control" id="text" name="text" ng-minlength=2 ng-maxlength=100
+                       ng-model="ad.text"> Your ad content ... </textarea>
+                        <span ng-show="newAdForm.text.$dirty && newAdForm.text.$error.required" class="text-danger">Ad content is required</span>
+                    </div>
+                  </div>
+                  </div>
+                   <div class="col-lg-6">
+                   <img ng-bind="ad.image">
+                   </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="text" class="col-lg-2 control-label">Image</label>
+                    <div class="col-lg-7">
+                      <input  type="file" accept='image/*' class="form-control" id="image" name="image" ng-model="ad.imageDataUrl">
+                    </div>
+                     <button class=" col-lg-2 btn btn-default">Browse</button>
+                   </div>
+                   <div class="form-group">
+                    <label class="col-lg-2 control-label">Category:</label>
+                   <select class="form-control" id="category" ng-model="ad.categoryId">
+                          <option value="">-</option>
+                          <option ng-repeat="category in categories"value="{{category.id}}">{{category.name}}</option>
+                      </select>
+                    </div>
+                   <div class="form-group">
+                    <label class="col-lg-2 control-label">Towns:</label>
+                   <select class="form-control" id="town" ng-model="ad.townId">
+                          <option value="">-</option>
+                          <option ng-repeat="town in towns" value="{{town.name}}" >
+                            {{town.name}}
+                          </option>
+                      </select>
+                    </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-primary" ng-click="adNewAd(ad)">Publish</button>
+                      <button class="btn btn-default" ng-click="reset()">Cancel</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+          </div>
+        </div>
+     </div>

@@ -16,6 +16,9 @@ var app = angular.module('adApp', [ 'ngRoute','ngResource'])
 	}).when('/user/home', {
 		templateUrl: 'templates/user-home-screen.html',
 		controller: 'AdsController'
+	}).when('/user/ads/publish', {
+		templateUrl: 'templates/publish-new-ad.html',
+		controller: 'FormController'
 	}).otherwise({redirectTo:'/'})
 });
 
