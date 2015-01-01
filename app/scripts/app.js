@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('adApp', [ 'ngRoute','ngResource'])
+var app = angular.module('adApp', [ 'ngRoute','ngResource','ui.bootstrap'])
 .config(function ($routeProvider) {
 	$routeProvider
 	.when('/login', {

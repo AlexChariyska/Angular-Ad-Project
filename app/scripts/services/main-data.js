@@ -25,7 +25,7 @@ app.factory('adsData', function adsData($resource,$http) {
 	}
 
 	function getAllAds(success, error) {
-	 return makeRequest("GET",'http://softuni-ads.azurewebsites.net/api/ads?StartPage=1&PageSize=5',$http.defaults.headers,{},success, error);
+	 return makeRequest("GET",'http://softuni-ads.azurewebsites.net/api/ads',$http.defaults.headers,{},success, error);
 	};
 
 	function getAllTown(success, error) {
