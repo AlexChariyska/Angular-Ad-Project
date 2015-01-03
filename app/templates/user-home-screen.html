@@ -1,83 +1,66 @@
-<div data-ng-include data-src="'templates/navigation-logged.html'"></div>
-<div class="container">
-
-<div class="col-md-2">
- <div>
-        <h3>Navigation</h3>
-          <ul class="nav nav-pills nav-stacked">
-             <li class="active">
-              <a href="#/user/home">Home</a>
-            </li>
-              <li>
-               <a href="#/user/ads/publish">Publish new ads</a>
-            </li>
-              <li>
-               <a href="#/user/ads">My Ads</a>
-            </li>
-            <li>
-               <a href="#/user/profile">Edit Profile</a>
-            </li>
-          </ul>
-   </div>
-</div>
+<div data-ng-include data-src="'templates/partials/navigation-logged.html'"></div>
 <div class="container well" ng-controller="AdsController">
-  <div class="col-md-8 col-sm-12">
-      <ul id="ul" ng-repeat="ad in ads | filter:town | filter:category">
-        <li class="row">
-        <div class="col-md-12 col-sm-12">
-          <h3 class="pull-left">{{ad.title}}</h3>
-          <date  class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</date>
-        </div>
-        <div class="row">
+    <div class="col-md-2">
+        <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
+    </div>
+    <div class="col-md-8 col-sm-12">
+        <ul id="ul" ng-repeat="ad in filteredAds | filter:town | filter:category">
+            <li class="row">
+                <div class="col-md-12 col-sm-12">
+                    <h3 class="pull-left">{{ad.title}}</h3>
+                    <date class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</date>
+                </div>
+                <div class="row">
 
-          <div class="col-md-3 col-sm-4">
-            <img src="img\300px-No_image_available.svg.png" class="img-thumbnail" ng-src="{{ad.imageDataUrl}}">
-          </div>
-          <div class="col-md-9 col-sm-8">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                {{ad.text}}
-                {{ad.townId}}
-              </div>
-             </div>
-             <div class="col-md-6 col-sm-8">
-              <div class="well well-sm">
-               <strong>Name: </strong> {{ad.ownerName}}
-              </div>
-              <div class="well well-sm">
-               <strong>Email: </strong> {{ad.ownerEmail}}
-              </div>        
-              <div class="well well-sm">
-               <strong>Phone: </strong> {{ad.ownerPhone}}
-            </div>
-          </div>
-          </div>
-        </li>
-      </ul>
+                    <div class="col-md-3 col-sm-4">
+                        <img src="img\300px-No_image_available.svg.png" class="img-thumbnail"
+                             ng-src="{{ad.imageDataUrl}}">
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                {{ad.text}}
+                                {{ad.townId}}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-8">
+                            <div class="well well-sm">
+                                <strong>Name: </strong> {{ad.ownerName}}
+                            </div>
+                            <div class="well well-sm">
+                                <strong>Email: </strong> {{ad.ownerEmail}}
+                            </div>
+                            <div class="well well-sm">
+                                <strong>Phone: </strong> {{ad.ownerPhone}}
+                            </div>
+                        </div>
+                    </div>
+            </li>
+        </ul>
     </div>
 
-   <div class="col-md-2">
-   <div class="list-group">
-   <h3>Categories</h3>
-    <a class="list-group-item" ng-model="categoryId" ng-class="{active: isActive(category)}" ng-click="selectCategory('',category)">All</a>
-    <a class="list-group-item" ng-repeat="category in categories" ng-click="selectCategory(category.id,category)" ng-class="{active: isActive(category)}">{{category.name}}
-    </a>
-  </div>
-   <div class="list-group">
-     <h3>Towns</h3>
-    <a href="" class="list-group-item" ng-class="{active: isActive(town)}" ng-click="choseTown('', town)">All</a>
-    <a href="" class="list-group-item" ng-repeat="town in towns" ng-class="{active: isActive(town)}" ng-click="selectTown(town.id, town)">{{town.name}}
-    </a>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12 col-md-offset-4">
-     <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination> 
-       </div>
-  </div>
-</div>
-
-
-
-
+    <div class="col-md-2">
+        <div class="list-group">
+            <h3>Categories</h3>
+            <a class="list-group-item" ng-model="categoryId" ng-class="{active: isActive(category)}"
+               ng-click="selectCategory('',category)">All</a>
+            <a class="list-group-item" ng-repeat="category in categories"
+               ng-click="selectCategory(category.id,category)" ng-class="{active: isActive(category)}">{{category.name}}
+            </a>
+        </div>
+        <div class="list-group">
+            <h3>Towns</h3>
+            <a href="" class="list-group-item" ng-class="{active: isActive(town)}"
+               ng-click="choseTown('', town)">All</a>
+            <a href="" class="list-group-item" ng-repeat="town in towns" ng-class="{active: isActive(town)}"
+               ng-click="selectTown(town.id, town)">{{town.name}}
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-md-offset-4">
+            <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
+                        max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+        </div>
+    </div>
 </div>

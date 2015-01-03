@@ -1,19 +1,7 @@
-app.controller('AdsController', function AdsController($scope, $http, adsData, $route, $location) {
+app.controller('UserAdsController', function FormController($scope, adsData, $rootScope, $http) {
+    $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
-    $scope.selectTown = function (id) {
-        $scope.town = {townId: id};
-    };
-
-    $scope.selectCategory = function (id, item) {
-        $scope.category = {categoryId: id};
-        $scope.selected = item;
-    };
-
-    $scope.isActive = function (item) {
-        return $scope.selected === item;
-    };
-
-    adsData.getAllAds(
+    adsData.getUserAds(
         function (data, status, headers, config) {
             $scope.ads = data.ads;
             $scope.filteredAds = [],
@@ -38,28 +26,13 @@ app.controller('AdsController', function AdsController($scope, $http, adsData, $
             console.log(status, error);
         });
 
-    adsData.getAllTown(
-        function (data, status, headers, config) {
-            $scope.towns = data;
+    $scope.deactivate = function (id) {
+        adsData.deactivateAd( id ,
+            function (data, status, headers, config) {
+                alert("yes"); //toDo
         },
         function (error, status, headers, config) {
             console.log(status, error);
         });
-
-    adsData.getAllCategories(
-        function (data, status, headers, config) {
-            $scope.categories = data;
-        },
-        function (error, status, headers, config) {
-            console.log(status, error);
-        });
-
-    $scope.reload = function () {
-        $route.reload();
     }
-
-    $scope.logout = function () {
-        $rootScope.loggedUser = {};
-        $location.path('/');
-    }
-})
+});

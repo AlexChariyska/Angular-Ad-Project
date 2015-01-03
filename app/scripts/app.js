@@ -1,41 +1,41 @@
 'use strict';
 
-var app = angular.module('adApp', [ 'ngRoute','ngResource','ui.bootstrap'])
-.config(function ($routeProvider) {
-	$routeProvider
-	.when('/login', {
-		templateUrl: 'templates/login.html',
-		controller: 'FormController'
-	})
-	.when('/register', {
-		templateUrl: 'templates/register.html',	
-		controller: 'FormController'
-	}).when('/', {
-		templateUrl: 'templates/main-guest-view.html',
-		controller: 'AdsController'
-	}).when('/user/home', {
-		templateUrl: 'templates/user-home-screen.html'
-		/*controller: 'AdsController'*/
-	}).when('/user/ads/publish', {
-		templateUrl: 'templates/publish-new-ad.html',
-		controller: 'FormController'
-	}).otherwise({redirectTo:'/'})
-}).run( function($rootScope, $location) {
+var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/login', {
+                templateUrl: 'templates/login.html',
+                controller: 'FormController'
+            }).when('/register', {
+                templateUrl: 'templates/register.html',
+                controller: 'FormController'
+            }).when('/', {
+                templateUrl: 'templates/main-guest-view.html',
+                controller: 'AdsController'
+            }).when('/user/home', {
+                templateUrl: 'templates/user-home-screen.html'
+            }).when('/user/ads/publish', {
+                templateUrl: 'templates/publish-new-ad.html',
+                controller: 'FormController'
+            }).when('/user/ads', {
+                templateUrl: 'templates/user-ads.html'
+            }).otherwise({redirectTo: '/'})
+    }).run(function ($rootScope, $location) {
 
-    // register listener to watch route changes
-    $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-      if ( $rootScope.loggedUser == null ) {
-        // no logged user, we should be going to #login
-        if ( next.templateUrl == "templates/login.html" ) {
-          $location.path('/login');
-        }else if ( next.templateUrl == "templates/register.html" ) {
-          $location.path('/register');
-        } else {
-          // not going to #login, we should redirect now
-          $location.path( "/" );
-        }
-      }         
+        // register listener to watch route changes
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            if ($rootScope.loggedUser == null) {
+                // no logged user, we should be going to #login
+                if (next.templateUrl == "templates/login.html") {
+                    $location.path('/login');
+                } else if (next.templateUrl == "templates/register.html") {
+                    $location.path('/register');
+                } else {
+                    // not going to #login, we should redirect now
+                    $location.path("/");
+                }
+            }
+        });
     });
- });
 
 

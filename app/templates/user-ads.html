@@ -1,0 +1,62 @@
+<div data-ng-include data-src="'templates/partials/navigation-logged.html'"></div>
+<div class="container" ng-controller="UserAdsController">
+
+    <div class="col-md-2">
+        <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
+        <div data-ng-include data-src="'templates/partials/side-filters.html'"></div>
+    </div>
+    <div class="container well" ng-controller="UserAdsController">
+        <div class="col-md-10 col-sm-12">
+            <ul id="ul" ng-repeat="ad in filteredAds">
+                <li class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <h3 class="pull-left">{{ad.title}}</h3>
+                        <date class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</date>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-sm-4">
+                            <img src="img\300px-No_image_available.svg.png" class="img-thumbnail"
+                                 ng-src="{{ad.imageDataUrl}}">
+                        </div>
+                        <div class="col-md-6 col-sm-8">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    {{ad.text}}
+                                    {{ad.townId}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-4">
+                            <div class="well well-sm">
+                                <strong>Category: </strong> {{ad.categoryName}}
+                            </div>
+                            <div class="well well-sm">
+                                <strong>Town: </strong> {{ad.townName}}
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 status-panel">
+                            <strong>Status: </strong>
+
+                            <div class="panel-body">
+                                {{ad.status}}
+                            </div>
+                            <div ng-show="ad.status!=='Inactive'">
+                            <button type="submit" class="btn btn-primary" ng-click="deactivate(ad.id)">Deactivate</button>
+                            </div>
+                            <div ng-show="ad.status==='Inactive'">
+	                            <button type="submit" class="btn btn-primary" ng-click="deactivate(ad.id)">Edit</button><br/>
+	                            <button type="submit" class="btn btn-primary" ng-click="deactivate(ad.id)">Publish again</button><br/>
+	                            <button type="submit" class="btn btn-primary" ng-click="deactivate(ad.id)">Delete</button>
+                            </div>
+                        </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-md-offset-4">
+            <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
+                        max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+        </div>
+    </div>
+</div>

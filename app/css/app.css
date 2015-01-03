@@ -26,3 +26,11 @@ padding: 10px;
 #ad-town, #ad-category{
 	width: 80%;
 }
+.status-panel{
+	text-align: center;
+	position: relative;
+	top: -73px;
+}
+.status-panel button{
+	width: 100px;
+}
