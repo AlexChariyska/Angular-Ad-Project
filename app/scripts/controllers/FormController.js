@@ -1,4 +1,5 @@
-app.controller('FormController',function FormController($scope, adsData, $resource, $http, $location,$timeout){
+app.controller('FormController',function FormController($scope, adsData, $resource, $http, $location,$timeout,$rootScope){
+
 
     adsData.getAllTown(
     function (data, status, headers, config) {
@@ -16,7 +17,11 @@ app.controller('FormController',function FormController($scope, adsData, $resour
         console.log(status, error); 
     });
 
+  $scope.logout= function(){
+    $rootScope.loggedUser ={};
+    $timeout(function(){$location.path('/');}, 2000);
 
+}
 
 // Alert messages
     $scope.error = function(value) {
@@ -29,11 +34,14 @@ app.controller('FormController',function FormController($scope, adsData, $resour
 	$scope.login=function(ad){
         adsData.login(ad,
             function (data, status, headers, config) {
-                console.log(data);
-
+                sessionStorage.setItem('accessToken','Bearer '+ data['access_token']);
                  $scope.success = function(value) {
                     return true;
                  };
+                $rootScope.loggedUser={
+                    'username': data.username,
+                    'accessToken':'Bearer '+ data['access_token']
+                }
                 $timeout(function(){$location.path('/user/home');}, 2000);
 
             }, 
@@ -45,14 +53,6 @@ app.controller('FormController',function FormController($scope, adsData, $resour
             });
 	};
 
-                var ad={"username": "user13",
-  "password": "user13",
-  "confirmPassword": "user13",
-  "name": "user13",
-  "email": "user13@abv.bg",
-  "phone": "123-5896-55",
-  "townId": 1};
-
 	$scope.register=function(credentials){
      var newObj = JSON.stringify(credentials);
         adsData.register(newObj,
@@ -63,13 +63,14 @@ app.controller('FormController',function FormController($scope, adsData, $resour
                 alert("no");
             });
 	};
-
-
-  /*  $scope.adNewAd= function(ad){
-        adsData.createNewAd(ad);
-    }*/
 	
     $scope.reset = function() {
-    //To Do
-   };
+        return $scope.credentials={"username": "",
+              "password": "",
+              "confirmPassword": "",
+              "name": "",
+              "email": "",
+              "phone": "",
+              "townId":""};
+               };
 })

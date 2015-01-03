@@ -1,0 +1,17 @@
+<div class="navbar navbar-default navbar-top" ng-controller="FormController">
+      <div class="container">
+        <div class="navbar-header">
+           <a class="navbar-brand" href="#/user/home">SoftUni Ad Project - Home</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav navbar-right">
+             <li>
+              <a href="">{{loggedUser.username}}</a>
+            </li>
+            <li>
+               <a href="#/user/profile" ng-click="logout()">Logout</a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</div>

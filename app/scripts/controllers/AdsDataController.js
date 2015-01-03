@@ -1,4 +1,18 @@
-app.controller('AdsController',function AdsController($scope, adsData){
+app.controller('AdsController',function AdsController($scope,$http, adsData, $route, $location){
+
+    $scope.selectTown=function(id){
+        $scope.town = {townId: id};
+    };
+
+    $scope.selectCategory=function(id,item){
+        $scope.category = {categoryId: id};
+        $scope.selected = item; 
+    };
+
+    $scope.isActive = function(item) {
+           return $scope.selected === item;
+    };
+    
     adsData.getAllAds(
         function (data, status, headers, config) {
             $scope.ads = data.ads;
@@ -24,7 +38,7 @@ app.controller('AdsController',function AdsController($scope, adsData){
             console.log(status, error); 
         });
 
-    adsData.getAllTown(
+       adsData.getAllTown(
         function (data, status, headers, config) {
             $scope.towns = data;
         }, 
@@ -39,4 +53,13 @@ app.controller('AdsController',function AdsController($scope, adsData){
         function (error, status, headers, config) {
             console.log(status, error); 
         });
+
+     $scope.reload = function () {
+        $route.reload();
+    }
+
+    $scope.logout = function(){
+        $rootScope.loggedUser={};
+        $location.path('/');
+    }
 })

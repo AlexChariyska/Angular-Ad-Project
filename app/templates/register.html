@@ -1,8 +1,10 @@
-<div class="row">
+<div data-ng-include data-src="'templates/navigation.html'"></div>
+<div class="container">
+  <div class="row">
           <div class="col-lg-12 col-sm-12">
              <div class="alert alert-dismissable alert-danger" ng-show='error(ev)'>
             <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Invalid register. Change a few things up and try submitting again.
+            <strong>Invalid register. Change a few things up and try submitting again.</strong>
         </div> 
         <div class="alert alert-dismissable alert-success" ng-show='success(ev)'>
           <button type="button" class="close" data-dismiss="alert">×</button>
@@ -89,4 +91,5 @@
               </form>
           </div>
      </div>
+   </div>
    </div>

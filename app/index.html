@@ -15,26 +15,7 @@
   <link rel="stylesheet" href="css/app.css">
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
-<body ng-app="adApp" >
-<div class="navbar navbar-default navbar-top">
-      <div class="container">
-        <div class="navbar-header">
-           <a class="navbar-brand" href="#">SoftUni Ad Project</a>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav navbar-right">
-             <li>
-              <a href="#/login">Login</a>
-            </li>
-            <li>
-               <a href="#/register">Register</a>
-            </li>
-          </ul>
-        </div>
-    </div>
-</div>
-<main  class="container" ng-view>
-</main>
+<body ng-app="adApp" ng-view>
 
   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="bower_components/bootstrap/js/bootstrap.js"></script>
@@ -44,7 +25,7 @@
   <script src="libs/angular/ui-bootstrap-tpls-0.12.0.min.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/services/main-data.js"></script>
-  <script src="scripts/controllers/ads-controller.js"></script>
+  <script src="scripts/controllers/AdsDataController.js"></script>
     <script src="scripts/controllers/FormController.js"></script>
      <script src="scripts/controllers/LoginController.js"></script>
 </body>
