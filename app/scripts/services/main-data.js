@@ -29,6 +29,14 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/'+ id, $http.defaults.headers, {}, success, error);
     };
 
+    function deleteAd(id, success, error) {
+        return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/user/ads/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
+     function publishAgain(id, success, error) {
+        return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
     function getAllTown(success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/Api/Towns', $http.defaults.headers, {}, success, error);
     };
@@ -50,6 +58,8 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         login: login,
         register: register,
         getUserAds: getUserAds,
-        deactivateAd:deactivateAd
+        deactivateAd:deactivateAd,
+        deleteAd:deleteAd,
+        publishAgain:publishAgain
     }
 })

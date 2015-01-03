@@ -32,5 +32,6 @@ padding: 10px;
 	top: -73px;
 }
 .status-panel button{
-	width: 100px;
+	width: 140px;
+	margin-bottom: 5px;
 }
