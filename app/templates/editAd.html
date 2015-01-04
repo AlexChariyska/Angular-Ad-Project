@@ -1,0 +1,65 @@
+ <div data-ng-include data-src="'templates/partials/navigation-logged.html'"></div>
+ <div class="container well">
+ <div class="col-md-2">
+        <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
+ </div>
+    <div class="col-md-7 col-sm-12 col-md-offset-2">
+        <form class="form-horizontal" ng-controller="AdsFormController">
+        <div class="row">
+            <legend>Edit Ad?</legend>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="title" class="col-md-2 control-label">Title: </label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="title" name="title" ng-model="ad.title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-md-2 control-label">Text: </label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" id="textArea" ng-model="ad.text"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="img" class="col-md-2 control-label">Image: </label>
+                    <div class="col-md-10">
+                         <input type="file" class="form-control" id="img" name="img" ng-model="ad.imageDataUrl">
+                    </div>
+                </div>
+                <div class="form-group" ng-controller="AdsController">
+                    <label for="category" class="col-lg-2 control-label">Category: </label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="category" ng-model="ad.categoryId">
+                            <option value="">-</option>
+                            <option ng-controller="AdsController" ng-repeat="category in categories" value="{{category.id}}">
+                                {{category.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-controller="AdsController">
+                        <label for="town" class="col-lg-2 control-label">Town: </label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="town" ng-model="ad.townId">
+                                <option value="">-</option>
+                                <option ng-controller="AdsController" ng-repeat="town in towns" value="{{town.id}}">
+                                    {{town.name}}
+                                </option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+             <div class="col-md-4">
+             <img ng-src='' ng-bind="ad.imageDataUrl">
+             </div>
+             <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <button type="submit" class="btn btn-primary" ng-click="edit(ad.id)">Login
+                        </button>
+                        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+                    </div>
+                </div>
+           </div>
+        </form>
+    </div>
+</div>

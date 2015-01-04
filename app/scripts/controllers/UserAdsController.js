@@ -1,4 +1,4 @@
-app.controller('UserAdsController', function FormController($scope, adsData, $rootScope, $http, $route) {
+app.controller('UserAdsController', function FormController($scope, adsData, $rootScope, $http, $route,$location,idService) {
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
     adsData.getUserAds(
@@ -30,9 +30,6 @@ app.controller('UserAdsController', function FormController($scope, adsData, $ro
     $scope.deactivate = function (id) {
         adsData.deactivateAd( id ,
             function (data, status, headers, config) {  
-            debugger;  
-            $scope.success= true;
-            $scope.message="deactivated";
             $route.reload();
         },
         function (error, status, headers, config) {
@@ -40,23 +37,19 @@ app.controller('UserAdsController', function FormController($scope, adsData, $ro
         });
     };
 
-    $scope.delete = function (id) {
-        adsData.deleteAd( id ,
-            function (data, status, headers, config) {
-                $scope.success= true;
-                $scope.message="deleted";
-                $route.reload();
-        },
-        function (error, status, headers, config) {
-            console.log(status, error);
-        });
+    $scope.redirectToDelete = function (id) {
+        idService.setId(id);
+        $location.path('/user/ads/delete');
     };
 
-       $scope.publishAgain = function (id) {
+   $scope.redirectToEdit = function (id) {
+        idService.setId(id);
+        $location.path('/user/ads/edit');
+    };
+
+   $scope.publishAgain = function (id) {
         adsData.publishAgain( id ,
             function (data, status, headers, config) {
-                $scope.success= true;
-                $scope.message="deleted";
                 $route.reload();
         },
         function (error, status, headers, config) {

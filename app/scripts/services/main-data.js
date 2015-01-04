@@ -25,6 +25,10 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads', $http.defaults.headers, {}, success, error);
     };
 
+    function getAd(id, success, error) {
+        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
     function deactivateAd(id, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/'+ id, $http.defaults.headers, {}, success, error);
     };
@@ -60,6 +64,26 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         getUserAds: getUserAds,
         deactivateAd:deactivateAd,
         deleteAd:deleteAd,
-        publishAgain:publishAgain
+        publishAgain:publishAgain,
+        getAd:getAd
     }
 })
+
+
+app.service('idService', function() {
+  var idSaved;
+
+  var setId = function(id) {
+      idSaved=id;
+  }
+
+  var getId = function(){
+      return idSaved;
+  }
+
+  return {
+    setId: setId,
+    getId: getId
+  };
+
+});

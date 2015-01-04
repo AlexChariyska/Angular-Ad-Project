@@ -19,6 +19,10 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 controller: 'FormController'
             }).when('/user/ads', {
                 templateUrl: 'templates/user-ads.html'
+            }).when('/user/ads/delete', {
+                templateUrl: 'templates/delete.html'
+            }).when('/user/ads/edit', {
+                templateUrl: 'templates/editAd.html'
             }).otherwise({redirectTo: '/'})
     }).run(function ($rootScope, $location) {
 
