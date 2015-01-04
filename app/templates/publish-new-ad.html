@@ -3,74 +3,83 @@
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
     </div>
-<div class="row">
-    <div class="col-lg-6 col-sm-12 col-lg-offset-3">
+    <div class="col-md-9 col-sm-12 col-md-offset-1">
         <div class="well bs-component">
-            <form class="form-horizontal" name="newAdForm" ng-controller="PublishAdController" novalidate >
+            <form class="form-horizontal" name="newAdForm" ng-controller="PublishAdController" novalidate>
                 <fieldset>
                     <legend>Publish new ad</legend>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-md-8">
                             <div class="form-group ">
-                                <label for="title" class="col-lg-2 control-label">Title</label>
+                                <label for="titleNewAd" class="col-md-2 control-label">Title</label>
 
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="Title"
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="titleNewAd" name="titleNewAd"
+                                           placeholder="Title"
                                            ng-model="ad.title" required>
-                                    <span ng-show="newAdForm.username.$dirty && newAdForm.username.$error.required"
+                                    <span ng-show="newAdForm.titleNewAd.$dirty && newAdForm.titleNewAd.$error.required"
                                           class="text-danger">Title is required</span>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="text" class="col-lg-2 control-label">Text</label>
+                                <label for="textNewAd" class="col-md-2 control-label">Text</label>
 
-                                <div class="col-lg-10">
-                                    <textarea type="text" class="form-control" id="text" name="text" ng-minlength=2
+                                <div class="col-md-10">
+                                    <textarea type="text" class="form-control" id="textNewAd" name="textNewAd"
+                                              ng-minlength=2
                                               ng-maxlength=100
-                                              ng-model="ad.text"> Your ad content ... </textarea>
-                                     <span ng-show="newAdForm.text.$dirty && newAdForm.text.$error.required"
+                                              ng-model="ad.text" required> Your ad content ... </textarea>
+                                     <span ng-show="newAdForm.textNewAd.$dirty && newAdForm.textNewAd.$error.required"
                                            class="text-danger">Ad content is required</span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <img ng-bind="ad.image">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="text" class="col-lg-2 control-label">Image</label>
 
-                        <div class="col-lg-7">
-                            <input type="file" accept='image/*' class="form-control" id="image" name="image"
-                                   ng-model="ad.imageDataUrl">
+                            <div class="form-group">
+                                <label for="image" class="col-md-2 control-label">Image</label>
+
+                                <div class="col-md-7">
+                                    <input type="file" ng-pattern='^data:image/.*$' class="form-control" id="image"
+                                           name="image"
+                                           ng-model="ad.imageDataUrl">
+                                   <span ng-show="newAdForm.image.$dirty && newAdForm.image.$error.pattern"
+                                         class="text-danger">Image content is invalid</span>
+                                </div>
+                                <button class=" col-md-2 btn btn-default">Browse</button>
+                            </div>
+
                         </div>
-                        <button class=" col-lg-2 btn btn-default">Browse</button>
+                        <div class="col-md-4">
+                            <img ng-bind="ad.imageDataUrl">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Category:</label>
-                        <select class="form-control" id="ad-category" ng-model="ad.categoryId">
-                            <option value="">-</option>
-                            <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Towns:</label>
-                        <select class="form-control" id="ad-town" ng-model="ad.townId">
-                            <option value="">-</option>
-                            <option ng-repeat="town in towns" value="{{town.id}}">
-                                {{town.name}}
-                            </option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <button type="submit" class="btn btn-primary" ng-click="adNewAd(ad)">Publish</button>
-                            <button class="btn btn-default" ng-click="reset()">Cancel</button>
+                    <div class='row'>
+                        <div class="col-md-12">
+                            <div class="form-group" ng-controller="AdsController">
+                                <label class="col-md-2 control-label">Category:</label>
+                                <select class="form-control" id="ad-category" ng-model="ad.categoryId">
+                                    <option value="">-</option>
+                                    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group" ng-controller="AdsController">
+                                <label class="col-md-2 control-label">Towns:</label>
+                                <select class="form-control" id="ad-town" ng-model="ad.townId">
+                                    <option value="">-</option>
+                                    <option ng-repeat="town in towns" value="{{town.id}}">
+                                        {{town.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-5">
+                                <button type="submit" class="btn btn-primary" ng-click="adNewAd(ad)">Publish</button>
+                                <button class="btn btn-default" ng-click="reset()">Cancel</button>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
             </form>
         </div>
     </div>
-</div>
