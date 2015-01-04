@@ -1,6 +1,6 @@
 app.controller('AdsController', function AdsController($scope, $http, adsData, $route, $location) {
 
-    $scope.selectTown = function (id) {
+    $scope.selectTown = function (id,item) {
         $scope.town = {townId: id};
     };
 
@@ -37,29 +37,4 @@ app.controller('AdsController', function AdsController($scope, $http, adsData, $
         function (error, status, headers, config) {
             console.log(status, error);
         });
-
-    adsData.getAllTown(
-        function (data, status, headers, config) {
-            $scope.towns = data;
-        },
-        function (error, status, headers, config) {
-            console.log(status, error);
-        });
-
-    adsData.getAllCategories(
-        function (data, status, headers, config) {
-            $scope.categories = data;
-        },
-        function (error, status, headers, config) {
-            console.log(status, error);
-        });
-
-    $scope.reload = function () {
-        $route.reload();
-    }
-
-    $scope.logout = function () {
-        $rootScope.loggedUser = {};
-        $location.path('/');
-    }
 })

@@ -2,6 +2,13 @@
 	position: relative;
 	top:103px;
 }
+
+@media (max-width: 730px) {
+  .form-fieldset{
+	position: relative;
+	top:52px;
+	}
+}
 .info{
 	width: 90%;
 	float: right;

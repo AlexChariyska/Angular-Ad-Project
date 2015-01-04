@@ -1,5 +1,10 @@
-app.controller('UserAdsController', function FormController($scope, adsData, $rootScope, $http, $route,$location,idService) {
+app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http, $route,$location,idService) {
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
+
+    $scope.selectStatus=function(st){
+        $scope.statusFilter = {status:st};
+        console.log($scope.statusFilter);
+    }
 
     adsData.getUserAds(
         function (data, status, headers, config) {
@@ -23,17 +28,18 @@ app.controller('UserAdsController', function FormController($scope, adsData, $ro
             });
         },
         function (error, status, headers, config) {
-            console.log(status, error);
+            notyError();
         });
 
 
     $scope.deactivate = function (id) {
         adsData.deactivateAd( id ,
             function (data, status, headers, config) {  
+            notySuccess('deactivated your ad');
             $route.reload();
         },
         function (error, status, headers, config) {
-            console.log(status, error);
+            notyError();
         });
     };
 
@@ -50,10 +56,32 @@ app.controller('UserAdsController', function FormController($scope, adsData, $ro
    $scope.publishAgain = function (id) {
         adsData.publishAgain( id ,
             function (data, status, headers, config) {
+                notySuccess('published again your ad');
                 $route.reload();
         },
         function (error, status, headers, config) {
-            console.log(status, error);
+            notyError();
         });
     };
+
+    function notyError(){
+     noty({
+           text: 'Invalid action. Change a few things up and try submitting again!',
+           layout: 'topCenter',
+           closeWith: ['click', 'hover'],
+           type: 'error',
+           timeout:2000
+        });
+    };
+
+
+    function notySuccess(mesage){
+         noty({
+               text: 'Well done! You have successfully ' + mesage + '!',
+               layout: 'topCenter',
+               closeWith: ['click', 'hover'],
+               type: 'success',
+               timeout:2000
+            });
+        };
 });

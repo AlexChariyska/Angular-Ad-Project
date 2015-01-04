@@ -6,7 +6,7 @@
     </div>
     <div class="container well" ng-controller="UserAdsController">
         <div class="col-md-10 col-sm-12">
-            <ul id="ul" ng-repeat="ad in filteredUserAds">
+            <ul id="ul" ng-repeat="ad in filteredUserAds | filter:statusFilter">
                 <li class="row">
                     <div class="col-md-12 col-sm-12">
                         <h3 class="pull-left">{{ad.title}}</h3>

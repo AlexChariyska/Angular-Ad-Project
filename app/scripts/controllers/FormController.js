@@ -1,22 +1,4 @@
 app.controller('FormController', function FormController($scope, adsData, $resource, $http, $location, $timeout, $rootScope) {
-
-
-    adsData.getAllTown(
-        function (data, status, headers, config) {
-            $scope.towns = data;
-        },
-        function (error, status, headers, config) {
-            console.log(status, error);
-        });
-
-    adsData.getAllCategories(
-        function (data, status, headers, config) {
-            $scope.categories = data;
-        },
-        function (error, status, headers, config) {
-            console.log(status, error);
-        });
-
     $scope.logout = function () {
         noty({
            text: 'Are you sure you want to logout?.',
@@ -40,7 +22,6 @@ app.controller('FormController', function FormController($scope, adsData, $resou
            }
         ]
         });
-
     }
 
     $scope.login = function (ad) {

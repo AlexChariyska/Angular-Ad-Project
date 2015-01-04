@@ -1,4 +1,4 @@
-app.controller('AdsFormController', function FormController($scope, adsData, $rootScope, $http, $route,$location,idService) {
+app.controller('AdsFormController', function ($scope, adsData, $rootScope, $http, $route,$location,idService) {
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
     var id = idService.getId();
@@ -7,20 +7,18 @@ app.controller('AdsFormController', function FormController($scope, adsData, $ro
                 $scope.ad=data;
         },
         function (error, status, headers, config) {
-            console.log(status, error);
+            notyError();
         });
 
-debugger;
-console.log($scope.ad);
+
     $scope.delete = function (passedId) {
         adsData.deleteAd( passedId ,
             function (data, status, headers, config) {
-            	alert("yes");
+            	notySuccess('deleted');
                 $route.reload();
         },
         function (error, status, headers, config) {
-            console.log(status, error);
-            alert("no");
+            notyError();
         });
     };
 
@@ -28,10 +26,11 @@ console.log($scope.ad);
 	$scope.edit= function(passedId){
 		adsData.publishAgain( passedId ,
 	            function (data, status, headers, config) {
+                    notySuccess('published again');
 	                $route.reload();
 	        },
 	        function (error, status, headers, config) {
-	            console.log(status, error);
+	            notyError();
 	        });
 	};
 
@@ -41,6 +40,29 @@ console.log($scope.ad);
 
 	$scope.deleteImg=function(){
 		
-	}
+	};
+
+
+
+    function notyError(){
+         noty({
+               text: 'Invalid action. Change a few things up and try submitting again!',
+               layout: 'topCenter',
+               closeWith: ['click', 'hover'],
+               type: 'error',
+               timeout:2000
+            });
+        };
+
+
+    function notySuccess(mesage){
+         noty({
+               text: 'well done! You have successfully ' + mesage + '!',
+               layout: 'topCenter',
+               closeWith: ['click', 'hover'],
+               type: 'success',
+               timeout:2000
+            });
+        };
 
 });
