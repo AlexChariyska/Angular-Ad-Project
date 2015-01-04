@@ -1,14 +1,6 @@
 <div data-ng-include data-src="'templates/partials/navigation.html'"></div>
 <div class="container">
     <div class="row">
-        <div class="alert alert-dismissable alert-danger" ng-show='error(ev)'>
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Invalid login. Change a few things up and try submitting again.</strong>
-        </div>
-        <div class="alert alert-dismissable alert-success" ng-show='success(ev)'>
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            <strong>Well done!</strong> You have successfully loged in. You will be redirected to the home page.
-        </div>
         <div class="col-md-6 col-md-offset-3 col-sm-12">
             <div class="well bs-component">
                 <form class="form-horizontal" name="loginForm" novalidate>

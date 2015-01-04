@@ -39,4 +39,8 @@ console.log($scope.ad);
         $location.path('/user/ads');
 	};
 
+	$scope.deleteImg=function(){
+		
+	}
+
 });

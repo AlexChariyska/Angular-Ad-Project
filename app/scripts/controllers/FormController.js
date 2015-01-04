@@ -18,28 +18,42 @@ app.controller('FormController', function FormController($scope, adsData, $resou
         });
 
     $scope.logout = function () {
-        $rootScope.loggedUser = {};
-        $timeout(function () {
-            $location.path('/');
-        }, 2000);
+        noty({
+           text: 'Are you sure you want to logout?.',
+           layout: 'center',
+           closeWith: ['click', 'hover'],
+           type: 'confirm',
+           buttons: [
+           {
+               addClass: 'btn btn-primary', text: 'Ok', onClick: function () {
+                   $rootScope.loggedUser = {};
+                        $timeout(function () {
+                            $location.path('/');
+                        }, 2000);
+               }
+           },
+           {
+               addClass: 'btn btn-danger', text: 'Cancel', onClick: function ($noty) {
+                   $noty.close();
+                   noty({ text: 'You clicked "Cancel" button', layout: 'topCenter', type: 'information',timeout:2000 });
+               }
+           }
+        ]
+        });
 
     }
-
-// Alert messages
-    $scope.error = function (value) {
-        return false;
-    };
-    $scope.success = function (value) {
-        return false;
-    };
 
     $scope.login = function (ad) {
         adsData.login(ad,
             function (data, status, headers, config) {
-                sessionStorage.setItem('accessToken', 'Bearer ' + data['access_token']);
-                $scope.success = function (value) {
-                    return true;
-                };
+                noty({
+                       text: 'Well done! You have successfully loged in. You will be redirected to the home page.',
+                       layout: 'top',
+                       closeWith: ['click', 'hover'],
+                       type: 'success',
+                       timeout:2000
+                    });
+              
                 $rootScope.loggedUser = {
                     'username': data.username,
                     'accessToken': 'Bearer ' + data['access_token']
@@ -50,21 +64,22 @@ app.controller('FormController', function FormController($scope, adsData, $resou
 
             },
             function (error, status, headers, config) {
-                $scope.error = function (value) {
-                    return true;
-                };
-                alert("no");
+                notyError();
             });
     };
 
     $scope.register = function (credentials) {
         var newObj = JSON.stringify(credentials);
+        var logInData={
+            'username':credentials.username,
+            'password':credentials.password
+        }
         adsData.register(newObj,
             function (data, status, headers, config) {
-                console.log(data);
+                $scope.login(logInData);
             },
             function (error, status, headers, config) {
-                alert("no");
+               notyError();
             });
     };
 
@@ -77,4 +92,14 @@ app.controller('FormController', function FormController($scope, adsData, $resou
             "phone": "",
             "townId": ""};
     };
+
+    function notyError(){
+         noty({
+               text: 'Invalid action. Change a few things up and try submitting again!',
+               layout: 'topCenter',
+               closeWith: ['click', 'hover'],
+               type: 'error',
+               timeout:2000
+            });
+        };
 });
