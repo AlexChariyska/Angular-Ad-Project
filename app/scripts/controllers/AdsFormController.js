@@ -3,7 +3,7 @@ app.controller('AdsFormController', function ($scope, adsData, $rootScope, $http
 
     var id = idService.getId();
     adsData.getAd(  id,
-            function (data, status, headers, config) {
+          function (data, status, headers, config) {
                 $scope.ad=data;
         },
         function (error, status, headers, config) {
@@ -15,7 +15,7 @@ app.controller('AdsFormController', function ($scope, adsData, $rootScope, $http
         adsData.deleteAd( passedId ,
             function (data, status, headers, config) {
             	notySuccess('deleted');
-                $route.reload();
+               $location.path('/user/home');
         },
         function (error, status, headers, config) {
             notyError();
@@ -38,12 +38,6 @@ app.controller('AdsFormController', function ($scope, adsData, $rootScope, $http
         $location.path('/user/ads');
 	};
 
-	$scope.deleteImg=function(){
-		
-	};
-
-
-
     function notyError(){
          noty({
                text: 'Invalid action. Change a few things up and try submitting again!',
@@ -53,7 +47,6 @@ app.controller('AdsFormController', function ($scope, adsData, $rootScope, $http
                timeout:2000
             });
         };
-
 
     function notySuccess(mesage){
          noty({

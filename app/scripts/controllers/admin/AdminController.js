@@ -1,7 +1,7 @@
-app.controller('AdminController', function AdminController($scope, $http, adsData, $route, $rootScope) {
+app.controller('AdminController', function AdminController($scope, $http, adsData,idService, $route, $rootScope, $location) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
-	 adsData.getAdminAds(
+	adsData.getAdminAds(
 	        function (data, status, headers, config) {
 	            $scope.ads = data.ads;
 	            $scope.filteredAds = [],
@@ -23,9 +23,10 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 	            });
 	        },
 	        function (error, status, headers, config) {
-	            notyError();
+	            notyError("loading ads");
 	        }
 	    );
+
 
 	$scope.approve = function(id){
 		adsData.approveAd(id, 
@@ -39,7 +40,7 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 	}
 
 	$scope.reject = function(id){
-	adsData.rejectAd(id, 
+		adsData.rejectAd(id, 
 			function (data, status, headers, config) {
 	           notySuccess('rejected the ad!');
 	           $route.reload(); 
@@ -48,6 +49,18 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 	            notyError()
 	        });
 	}
+
+	$scope.deleteRedirect = function(id){
+		idService.setId(id);
+		debugger;
+		$location.path('/admin/ads/delete');
+	}
+
+	$scope.editRedirect = function(id){
+		idService.setId(id);
+		$location.path('/admin/ads/edit');
+	}
+
 
 function notyError(){
          noty({
@@ -60,12 +73,12 @@ function notyError(){
     };
 
 function notySuccess(message){
- noty({
-       text: 'Well done, you have successfully ' + message,
-       layout: 'topCenter',
-       closeWith: ['click', 'hover'],
-       type: 'success',
-       timeout:2000
-    });
+	 noty({
+	       text: 'Well done, you have successfully ' + message,
+	       layout: 'topCenter',
+	       closeWith: ['click', 'hover'],
+	       type: 'success',
+	       timeout:2000
+	    });
 	};
 });

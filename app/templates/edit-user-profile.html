@@ -29,7 +29,7 @@
                 <label for="town" class="col-md-12 control-label">Town: </label>
                 <div class="col-md-12">
                     <select class="form-control" id="town" ng-model="user.townId">
-                        <!-- <option value="">-</option> -->
+                        <option value="">-</option> 
                         <option ng-repeat="town in towns" value="{{town.townId}}">
                             {{town.name}}
                         </option>

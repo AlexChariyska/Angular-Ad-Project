@@ -30,10 +30,9 @@ app.controller('FormController', function FormController($scope, adsData, $resou
                     'username': data.username,
                     'accessToken': 'Bearer ' + data['access_token']
                 }
-                debugger;
 
                 if(data.isAdmin){
-                  $rootScope.loggedUser.isAdmin = true;
+                  $rootScope.loggedUser[isAdmin] = true;
                   $timeout(function () {
                       $location.path('/admin/home');
                   }, 2000); 

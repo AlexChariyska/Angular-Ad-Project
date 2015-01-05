@@ -54,8 +54,39 @@ padding: 10px;
 	margin-bottom: 10px;
 	text-align: center;
 }
+/* output{
+	padding-top: 0px;
+} */
 @media (max-width: 991px){
 	.img-thumbnail{
 		margin-bottom: 10px;
 	}
+}
+
+label.filebutton{
+    width:120px;
+    height:40px;
+    color:#fff;
+    overflow:hidden;
+    position:relative;
+    background-color:#272B30;
+    text-align: center;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+label span input {
+    z-index: 999;
+    line-height: 0;
+    font-size: 50px;
+    position: absolute;
+    top: -2px;
+    left: -700px;
+    opacity: 0;
+    filter: alpha(opacity = 0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+    _cursor: hand;
+    margin: 0;
+    padding:0;
 }

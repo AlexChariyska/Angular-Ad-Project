@@ -57,6 +57,14 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/user/ads/'+ id, $http.defaults.headers, {}, success, error);
     };
 
+    function deleteAdAdmin(id, success, error) {
+        return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/admin/Ads/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
+    function getAdminAd(id, success, error) {
+        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/ads/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
     function publishAgain(id, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/'+ id, $http.defaults.headers, {}, success, error);
     };
@@ -86,6 +94,7 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
     return {
         getAllAds: getAllAds,
         getAdminAds:getAdminAds,
+        getAdminAd:getAdminAd,
         publishAd:publishAd,
         getUserProfile:getUserProfile,
         editProfile:editProfile,
@@ -98,6 +107,7 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         deactivateAd:deactivateAd,
         approveAd:approveAd,
         rejectAd:rejectAd,
+        deleteAdAdmin:deleteAdAdmin,
         deleteAd:deleteAd,
         publishAgain:publishAgain,
         getAd:getAd

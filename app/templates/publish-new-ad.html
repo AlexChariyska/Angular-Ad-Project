@@ -35,21 +35,19 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="image" class="col-md-2 control-label">Image</label>
+                                <label for="files" class="col-md-2 control-label">Image</label>
 
                                 <div class="col-md-7">
-                                    <input type="file" ng-pattern='^data:image/.*$' class="form-control" id="image"
-                                           name="image"
-                                           ng-model="ad.imageDataUrl">
-                                   <span ng-show="newAdForm.image.$dirty && newAdForm.image.$error.pattern"
-                                         class="text-danger">Image content is invalid</span>
+                                   <label class="filebutton">
+                                    Browse
+                                    <span><input type="file" id="fileInput" ng-model="ad.imageDataUrl" class="form-control"></span>
+                                    </label>
                                 </div>
-                                <button class=" col-md-2 col-sm-offset-3 btn btn-default">Browse</button>
                             </div>
 
                         </div>
                         <div class="col-md-4 col-sm-6">
-                            <img ng-bind="ad.imageDataUrl">
+                            <div id="fileDisplayArea"></div>
                         </div>
                     </div>
                     <div class='row'>

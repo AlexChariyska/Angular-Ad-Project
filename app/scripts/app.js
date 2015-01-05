@@ -4,13 +4,13 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
     .config(function ($routeProvider) {
         $routeProvider
             .when('/login', {
-                templateUrl: 'templates/login.html',
+                templateUrl: 'templates/guest-views/login.html',
                 controller: 'FormController'
             }).when('/register', {
-                templateUrl: 'templates/register.html',
+                templateUrl: 'templates/guest-views/register.html',
                 controller: 'FormController'
             }).when('/', {
-                templateUrl: 'templates/main-guest-view.html',
+                templateUrl: 'templates/guest-views/main-guest-view.html',
                 controller: 'AdsController'
             }).when('/user/home', {
                 templateUrl: 'templates/user-home-screen.html'
@@ -27,6 +27,10 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/edit-user-profile.html'
             }).when('/admin/home', {
                 templateUrl: 'templates/admin/admin-home.html'
+            }).when('/admin/ads/edit', {
+                templateUrl: 'templates/admin/edit-ad.html'
+            }).when('/admin/ads/delete', {
+                templateUrl: 'templates/admin/delete-ad.html'
             }).otherwise({redirectTo: '/'})
     }).run(function ($rootScope, $location) {
 
