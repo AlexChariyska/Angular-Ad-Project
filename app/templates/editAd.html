@@ -50,7 +50,7 @@
                 </div>
             </div>
              <div class="col-md-4">
-                 <img ng-src='' ng-bind="ad.imageDataUrl">
+                 <img ng-src="data:image/*;base64,{{ad.imageDataUrl}}">
                   <button type="submit" class="btn btn-default" ng-click="changeImg()">Change image
                             </button>
                  <button class="btn btn-default" ng-click="deleteImg()">Delete image</button>

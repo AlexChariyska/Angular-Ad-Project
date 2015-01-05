@@ -1,32 +1,23 @@
 app.controller('FormController', function FormController($scope, adsData, $resource, $http, $location, $timeout, $rootScope) {
+   
     $scope.logout = function () {
-        noty({
-           text: 'Are you sure you want to logout?.',
-           layout: 'center',
-           closeWith: ['click', 'hover'],
-           type: 'confirm',
-           buttons: [
-           {
-               addClass: 'btn btn-primary', text: 'Ok', onClick: function () {
-                   $rootScope.loggedUser = {};
-                        $timeout(function () {
-                            $location.path('/');
-                        }, 2000);
-               }
-           },
-           {
-               addClass: 'btn btn-danger', text: 'Cancel', onClick: function ($noty) {
-                   $noty.close();
-                   noty({ text: 'You clicked "Cancel" button', layout: 'topCenter', type: 'information',timeout:2000 });
-               }
-           }
-        ]
-        });
+          noty({
+               text: 'Well done! You have successfully loged out. You will be redirected to the home page.',
+               layout: 'top',
+               closeWith: ['click', 'hover'],
+               type: 'information',
+               timeout:2000
+            });
+         $rootScope.loggedUser = {};
+              $timeout(function () {
+                  $location.path('/');
+              }, 2000);
     }
 
     $scope.login = function (ad) {
         adsData.login(ad,
             function (data, status, headers, config) {
+              console.log(data);
                 noty({
                        text: 'Well done! You have successfully loged in. You will be redirected to the home page.',
                        layout: 'top',
@@ -39,9 +30,18 @@ app.controller('FormController', function FormController($scope, adsData, $resou
                     'username': data.username,
                     'accessToken': 'Bearer ' + data['access_token']
                 }
-                $timeout(function () {
-                    $location.path('/user/home');
-                }, 2000);
+                debugger;
+
+                if(data.isAdmin){
+                  $rootScope.loggedUser.isAdmin = true;
+                  $timeout(function () {
+                      $location.path('/admin/home');
+                  }, 2000); 
+                }else {
+                  $timeout(function () {
+                      $location.path('/user/home');
+                  }, 2000);
+              }
 
             },
             function (error, status, headers, config) {

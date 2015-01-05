@@ -25,6 +25,8 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/editAd.html'
             }).when('/user/profile', {
                 templateUrl: 'templates/edit-user-profile.html'
+            }).when('/admin/home', {
+                templateUrl: 'templates/admin/admin-home.html'
             }).otherwise({redirectTo: '/'})
     }).run(function ($rootScope, $location) {
 

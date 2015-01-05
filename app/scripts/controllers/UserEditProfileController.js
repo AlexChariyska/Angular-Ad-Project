@@ -13,15 +13,10 @@ adsData.getUserProfile(
 
   $scope.update = function(userUpdated){
       var updated = JSON.stringify(userUpdated);
+      debugger;
       adsData.editProfile(updated,
             function (data, status, headers, config) {
-                noty({
-                   text: 'Well done, you successfully changed your profile!',
-                   layout: 'topCenter',
-                   closeWith: ['click', 'hover'],
-                   type: 'success',
-                   timeout:2000
-              });
+              notySuccess("changed your profile ")
             },
             function (error, status, headers, config) {
               notyError();
@@ -29,13 +24,40 @@ adsData.getUserProfile(
       );
   }
 
+  $scope.changePassword = function(pass){
+    var passNew = JSON.stringify(pass);
+    adsData.changePassword(passNew,
+        function (error, status, headers, config) {
+          notySuccess("changed your password ");
+        },
+        function (error, status, headers, config) {
+          notyError();
+        }
+    );
+}
+
+  $scope.reset= function(data){
+    return data={};
+  }
+
   function notyError(){
-       noty({
-           text: 'An error occurred!',
-           layout: 'topCenter',
-           closeWith: ['click', 'hover'],
-           type: 'error',
-           timeout:2000
-        });
-      }
+     noty({
+         text: 'An error occurred!',
+         layout: 'topCenter',
+         closeWith: ['click', 'hover'],
+         type: 'error',
+         timeout:2000
+     });
+  }
+
+  function notySuccess(message){
+     noty({
+          text: 'Well done, you successfully ' + message + '!',
+                 layout: 'topCenter',
+                 closeWith: ['click', 'hover'],
+                 type: 'success',
+                 timeout:2000
+     });
+  }
+
 });

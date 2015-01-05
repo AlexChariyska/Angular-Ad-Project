@@ -21,6 +21,10 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/ads', $http.defaults.headers, {}, success, error);
     };
 
+    function getAdminAds(success, error) {
+        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/ads', $http.defaults.headers, {}, success, error);
+    };
+
     function getUserAds(success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads', $http.defaults.headers, {}, success, error);
     };
@@ -35,6 +39,10 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
 
     function editProfile(data, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/profile', $http.defaults.headers, data, success, error);
+    };
+
+    function changePassword(data, success, error) {
+        return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/changePassword', $http.defaults.headers, data, success, error);
     };
 
     function publishAd(data, success, error) {
@@ -53,6 +61,14 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/'+ id, $http.defaults.headers, {}, success, error);
     };
 
+    function approveAd(id, success, error) {
+        return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/admin/Ads/Approve/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
+    function rejectAd(id, success, error) {
+        return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/admin/Ads/Reject/'+ id, $http.defaults.headers, {}, success, error);
+    };
+
     function getAllTown(success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/Api/Towns', $http.defaults.headers, {}, success, error);
     };
@@ -69,15 +85,19 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
     };
     return {
         getAllAds: getAllAds,
+        getAdminAds:getAdminAds,
         publishAd:publishAd,
         getUserProfile:getUserProfile,
         editProfile:editProfile,
+        changePassword:changePassword,
         getAllTown: getAllTown,
         getAllCategories: getAllCategories,
         login: login,
         register: register,
         getUserAds: getUserAds,
         deactivateAd:deactivateAd,
+        approveAd:approveAd,
+        rejectAd:rejectAd,
         deleteAd:deleteAd,
         publishAgain:publishAgain,
         getAd:getAd
