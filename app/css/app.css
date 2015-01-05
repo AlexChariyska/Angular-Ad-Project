@@ -5,8 +5,16 @@
 
 @media (max-width: 730px) {
   .form-fieldset{
-	position: relative;
-	top:52px;
+		position: relative;
+		top:52px;
+	}
+	.status-panel{
+	  top: -73px;
+	}
+}
+@media (min-width: 731px) {
+	.status-panel{
+		top: -5px;
 	}
 }
 .info{
@@ -18,6 +26,7 @@
 }
 #ul{
 	list-style:none;
+	padding: 0 0 0 0;
 
 }
 #ul li{
@@ -36,9 +45,17 @@ padding: 10px;
 .status-panel{
 	text-align: center;
 	position: relative;
-	top: -73px;
 }
 .status-panel button{
 	width: 140px;
 	margin-bottom: 5px;
+}
+#user-navigation, #status-navigation{
+	margin-bottom: 10px;
+	text-align: center;
+}
+@media (max-width: 991px){
+	.img-thumbnail{
+		margin-bottom: 10px;
+	}
 }

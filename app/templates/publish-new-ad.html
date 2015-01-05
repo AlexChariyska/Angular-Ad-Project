@@ -9,7 +9,7 @@
                 <fieldset>
                     <legend>Publish new ad</legend>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 col-sm-6">
                             <div class="form-group ">
                                 <label for="titleNewAd" class="col-md-2 control-label">Title</label>
 
@@ -44,16 +44,16 @@
                                    <span ng-show="newAdForm.image.$dirty && newAdForm.image.$error.pattern"
                                          class="text-danger">Image content is invalid</span>
                                 </div>
-                                <button class=" col-md-2 btn btn-default">Browse</button>
+                                <button class=" col-md-2 col-sm-offset-3 btn btn-default">Browse</button>
                             </div>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-sm-6">
                             <img ng-bind="ad.imageDataUrl">
                         </div>
                     </div>
                     <div class='row'>
-                        <div class="col-md-12">
+                        <div class="col-md-12 col-sm-12">
                             <div class="form-group" ng-controller="TownCategoryDataController">
                                 <label class="col-md-2 control-label">Category:</label>
                                 <select class="form-control" id="ad-category" ng-model="ad.categoryId">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-md-4 col-md-offset-5">
+                            <div class="col-md-4 col-sm-offset-4 col-md-offset-5">
                                 <button type="submit" class="btn btn-primary" ng-click="adNewAd(ad)">Publish</button>
                                 <button class="btn btn-default" ng-click="reset()">Cancel</button>
                             </div>

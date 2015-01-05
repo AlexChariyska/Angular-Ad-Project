@@ -1,0 +1,75 @@
+<div data-ng-include data-src="'templates/partials/navigation-logged.html'"></div>
+<div class="container" ng-controller="UserEditProfileController">
+    <div class="col-md-2">
+        <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
+    </div>
+    <div class="col-md-10">
+    	<div class="row">
+    	 <form class="col-md-6">
+    	 	<legend>Edit Profile</legend>
+	    	 <div class="form-group">
+	            <label for="name" class="col-md-12 control-label">Name: </label>
+	            <div class="col-md-12">
+	                <input type="text" class="form-control" id="name" name="name" ng-model="user.name">
+	            </div>
+	        </div>
+        	<div class="form-group">
+	            <label for="email" class="col-md-12 control-label">Email: </label>
+	            <div class="col-md-12">
+	                <input type="text" class="form-control" id="email" name="email" ng-model="user.email">
+	            </div>
+       	 	</div>
+   	 	 	<div class="form-group">
+	            <label for="phone" class="col-md-12 control-label">Phone: </label>
+	            <div class="col-md-12">
+	                <input type="text" class="form-control" id="phone" name="phone" ng-model="user.phoneNumber">
+	            </div>
+       	 	</div>
+ 	        <div class="form-group" ng-controller="TownCategoryDataController">
+                <label for="town" class="col-md-12 control-label">Town: </label>
+                <div class="col-md-12">
+                    <select class="form-control" id="town" ng-model="user.townId">
+                        <option value="">-</option>
+                        <option ng-repeat="town in towns" value="{{town.id}}">
+                            {{town.name}}
+                        </option>
+                    </select>
+                </div>
+        	</div>
+        	 <div class="form-group">
+                <div class="col-md-12 col-sm-offset-4 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary" ng-click="update(user)">Update</button>
+                    <button class="btn btn-default" ng-click="reset()">Cancel</button>
+                </div>
+            </div>
+    	  </form>
+    	  <form class="col-md-6">
+    	   <legend>Change Password</legend>
+	    	 <div class="form-group">
+	            <label for="password" class="col-md-12 control-label">Old password: </label>
+	            <div class="col-md-12">
+	                <input type="password" class="form-control" id="password" name="password" ng-model="user.password">
+	            </div>
+	        </div>
+        	<div class="form-group">
+	            <label for="passwordNew" class="col-md-12 control-label">New password: </label>
+	            <div class="col-md-12">
+	                <input type="password" class="form-control" id="passwordNew" name="passwordNew" ng-model="">
+	            </div>
+       	 	</div>
+   	 	 	<div class="form-group">
+	            <label for="passwordConfirm" class="col-md-12 control-label">Old password: </label>
+	            <div class="col-md-12">
+	                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" ng-model="">
+	            </div>
+       	 	</div>
+         	 <div class="form-group">
+                <div class="col-md-12 col-sm-offset-4 col-md-offset-2">
+                    <button type="submit" class="btn btn-primary" ng-click="">Change Password</button>
+                    <button class="btn btn-default" ng-click="reset()">Cancel</button>
+                </div>
+            </div>
+    	 </form>
+    	</div>
+    </div>
+</div>

@@ -29,6 +29,14 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads/'+ id, $http.defaults.headers, {}, success, error);
     };
 
+    function getUserProfile(success, error) {
+        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/profile', $http.defaults.headers, {}, success, error);
+    };
+
+    function editProfile(data, success, error) {
+        return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/profile', $http.defaults.headers, data, success, error);
+    };
+
     function publishAd(data, success, error) {
         return makeRequest("POST", 'http://softuni-ads.azurewebsites.net/api/user/ads', $http.defaults.headers, data, success, error);
     };
@@ -41,7 +49,7 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/user/ads/'+ id, $http.defaults.headers, {}, success, error);
     };
 
-     function publishAgain(id, success, error) {
+    function publishAgain(id, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/'+ id, $http.defaults.headers, {}, success, error);
     };
 
@@ -62,6 +70,8 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
     return {
         getAllAds: getAllAds,
         publishAd:publishAd,
+        getUserProfile:getUserProfile,
+        editProfile:editProfile,
         getAllTown: getAllTown,
         getAllCategories: getAllCategories,
         login: login,
