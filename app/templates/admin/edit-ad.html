@@ -4,5 +4,93 @@
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
     <div class="col-md-10">
+     <form class="form-horizontal" ng-controller="DeleteEditController">
+        <div class="row">
+            <legend>Edit Ad?</legend>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="title" class="col-md-2 control-label">Title: </label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="title" name="title" ng-model="ad.title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-md-2 control-label">Text: </label>
+                    <div class="col-md-10">
+                        <textarea class="form-control" rows="3" id="textArea" ng-model="ad.text"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="img" class="col-md-2 control-label">Image: </label>
+                    <div class="col-md-10">
+                       <label class="filebutton">
+                        Browse
+                        <span><input type="file" id="fileInput" class="form-control"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="username" class="col-md-2 control-label">Username: </label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="username" ng-model="ad.ownerUsername">
+                    </div>
+                </div>
+                <div class="form-group" ng-controller="TownCategoryDataController">
+                    <label for="category" class="col-lg-2 control-label">Category: </label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="category" ng-model="ad.categoryId">
+                            <option value="">-</option>
+                            <option ng-repeat="category in categories" value="{{category.id}}">
+                                {{category.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-controller="TownCategoryDataController">
+                        <label for="town" class="col-lg-2 control-label">Town: </label>
+                        <div class="col-lg-10">
+                            <select class="form-control" id="town" ng-model="ad.townId">
+                                <option value="">-</option>
+                                <option ng-repeat="town in towns" value="{{town.id}}">
+                                    {{town.name}}
+                                </option>
+                            </select>
+                        </div>
+                </div>
+            </div>
+             <div class="col-md-4">
+                 <div id="fileDisplayArea">
+                     <img ng-src="{{ad.imageDataUrl}}" src="img\300px-No_image_available.svg.png" class="img-thumbnail">
+                 </div>
+                  <button type="submit" class="btn btn-default" ng-click="changeImg(ad.id,ad)">Change image
+                            </button>
+                 <button class="btn btn-default" ng-click="deleteImg(ad.id,ad)">Delete image</button>
+            <div class="form-group">
+                    <label for="date" class="col-md-2 control-label">Date: </label>
+                    <div class="col-md-10">
+                        <input type="date" class="form-control" id="date" name="date" ng-model="ad.date">
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="status" class="col-md-2 control-label">Status: </label>
+                <div class="col-md-10">
+                    <select type="input" class="form-control" id="status" name="status" ng-model="ad.status">
+                        <option value="WaithingApproval">Waiting Approval</option>
+                        <option value="Rejected">Rejected</option>
+                        <option value="Published">Published</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+             </div>
+            </div>
+             <div class="form-group row">
+                    <div class="col-md-10 col-md-offset-2">
+                        <button type="submit" class="btn btn-primary" ng-click="edit(ad.id,ad)">Edit
+                        </button>
+                        <button class="btn btn-default" ng-click="reset()">Cancel</button>
+                    </div>
+                </div>
+           </div>
+        </form>
     </div>
 </div>

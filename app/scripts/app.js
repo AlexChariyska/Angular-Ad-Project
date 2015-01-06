@@ -13,18 +13,18 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/guest-views/main-guest-view.html',
                 controller: 'AdsController'
             }).when('/user/home', {
-                templateUrl: 'templates/user-home-screen.html'
+                templateUrl: 'templates/user-views/user-home-screen.html'
             }).when('/user/ads/publish', {
-                templateUrl: 'templates/publish-new-ad.html',
+                templateUrl: 'templates/user-views/publish-new-ad.html',
                 controller: 'FormController'
             }).when('/user/ads', {
-                templateUrl: 'templates/user-ads.html'
+                templateUrl: 'templates/user-views/user-ads.html'
             }).when('/user/ads/delete', {
-                templateUrl: 'templates/delete.html'
+                templateUrl: 'templates/user-views/delete.html'
             }).when('/user/ads/edit', {
-                templateUrl: 'templates/editAd.html'
+                templateUrl: 'templates/user-views/edit-ad.html'
             }).when('/user/profile', {
-                templateUrl: 'templates/edit-user-profile.html'
+                templateUrl: 'templates/user-views/edit-user-profile.html'
             }).when('/admin/home', {
                 templateUrl: 'templates/admin/admin-home.html'
             }).when('/admin/ads/edit', {

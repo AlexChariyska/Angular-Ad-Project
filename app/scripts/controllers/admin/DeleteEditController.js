@@ -25,6 +25,10 @@ app.controller('DeleteEditController', function DeleteEditController($scope, $ht
     	return data={};
     }
 
+  $scope.cancel= function(){
+    $location.path('/admin/home');
+  }
+
 function notyError(){
          noty({
                text: 'Something went wrong, try again!',

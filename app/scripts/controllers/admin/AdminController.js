@@ -52,7 +52,6 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 
 	$scope.deleteRedirect = function(id){
 		idService.setId(id);
-		debugger;
 		$location.path('/admin/ads/delete');
 	}
 

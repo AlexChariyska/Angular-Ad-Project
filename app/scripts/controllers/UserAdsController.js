@@ -1,11 +1,6 @@
 app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http, $route,$location,idService) {
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
-    $scope.selectStatus=function(st){
-        $scope.statusFilter = {status:st};
-        console.log($scope.statusFilter);
-    }
-
     adsData.getUserAds(
         function (data, status, headers, config) {
             $scope.ads = data.ads;
@@ -30,6 +25,7 @@ app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http
         function (error, status, headers, config) {
             notyError();
         });
+
 
 
     $scope.deactivate = function (id) {

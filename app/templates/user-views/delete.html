@@ -3,7 +3,7 @@
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
     </div>
-    <div class="container well" ng-controller="AdsFormController">
+    <div class="container well" ng-controller="DeleteAdController">
         <div class="col-md-7 col-sm-12 col-md-offset-2">
             <h3 class="pull-center">Confirm Deleting Ad?</h3>
 
@@ -21,7 +21,6 @@
                         <div class="panel panel-default">
                             <div class="panel-body">
                                 {{ad.text}}
-                                {{ad.townId}}
                             </div>
                         </div>
                     </div>

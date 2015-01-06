@@ -2,6 +2,7 @@
 <div class="container well" ng-controller="AdminController">
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
+        <div data-ng-include data-src="'templates/partials/status-filters.html'"></div>
     </div>
     <div class="col-md-8">
         <ul id="ul" ng-repeat="ad in filteredAds ">

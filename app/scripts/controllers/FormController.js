@@ -17,7 +17,7 @@ app.controller('FormController', function FormController($scope, adsData, $resou
     $scope.login = function (ad) {
         adsData.login(ad,
             function (data, status, headers, config) {
-              console.log(data);
+
                 noty({
                        text: 'Well done! You have successfully loged in. You will be redirected to the home page.',
                        layout: 'top',
@@ -32,7 +32,7 @@ app.controller('FormController', function FormController($scope, adsData, $resou
                 }
 
                 if(data.isAdmin){
-                  $rootScope.loggedUser[isAdmin] = true;
+                  $rootScope.loggedUser['isAdmin'] = true;
                   $timeout(function () {
                       $location.path('/admin/home');
                   }, 2000); 
