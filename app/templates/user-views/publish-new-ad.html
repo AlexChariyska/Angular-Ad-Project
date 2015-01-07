@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-6">
                             <div class="form-group ">
-                                <label for="titleNewAd" class="col-md-2 control-label">Title</label>
+                                <label for="titleNewAd" class="col-md-2 control-label">Title*</label>
 
                                 <div class="col-md-10">
                                     <input type="text" class="form-control" id="titleNewAd" name="titleNewAd"
@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="textNewAd" class="col-md-2 control-label">Text</label>
+                                <label for="textNewAd" class="col-md-2 control-label">Text*</label>
 
                                 <div class="col-md-10">
                                     <textarea type="text" class="form-control" id="textNewAd" name="textNewAd"
@@ -30,7 +30,7 @@
                                               ng-maxlength=100
                                               ng-model="ad.text" required> Your ad content ... </textarea>
                                      <span ng-show="newAdForm.textNewAd.$dirty && newAdForm.textNewAd.$error.required"
-                                           class="text-danger">Ad content is required</span>
+                                           class="text-danger">Ad content is required.</span>
                                 </div>
                             </div>
 

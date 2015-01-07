@@ -4,7 +4,8 @@ app.controller('DeleteEditController', function DeleteEditController($scope, $ht
 	var id = idService.getId();
     adsData.getAdminAd(  id,
             function (data, status, headers, config) {
-                $scope.ad = data;
+              $scope.ad = data;
+              $scope.ad['date']=new Date(data.date);
 
         },
         function (error, status, headers, config) {

@@ -1,0 +1,27 @@
+<div data-ng-include data-src="'templates/partials/navigation-logged.html'"></div>
+<div class="container well">
+    <div class="col-md-2">
+        <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
+    </div>
+    <div class="col-md-6 col-md-offset-2" ng-controller="DeleteEditUser">
+    <h3>Confirm deleting user?</h3>
+  		<div class="well well-sm">
+            <strong>Username: </strong> {{user.username}}
+        </div>
+        <div class="well well-sm">
+            <strong>Name: </strong> {{user.name}}
+        </div>
+        <div class="well well-sm">
+            <strong>Email: </strong> {{user.email}}
+        </div>
+        <div class="well well-sm">
+            <strong>Phone: </strong> {{user.phoneNumber}}
+        </div>
+             <div class="well well-sm">
+            <strong>Town: </strong> {{user.town}}
+        </div>
+       <p>Deleting the user will also delete all ads, created by this user!</p>
+       <button class="btn btn-default col-md-offset-4"ng-click="deleteUser(user.username)">Delete</button>
+	   <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    </div>
+ </div>

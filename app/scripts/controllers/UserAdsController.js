@@ -1,6 +1,8 @@
 app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http, $route,$location,idService) {
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
+getAds();
+function getAds(){
     adsData.getUserAds(
         function (data, status, headers, config) {
             $scope.ads = data.ads;
@@ -25,7 +27,44 @@ app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http
         function (error, status, headers, config) {
             notyError();
         });
+}
 
+
+
+
+
+$scope.setStatus = function(status){
+    var param='Status=' + status;
+    adsData.getUserAdsWithParams(param,
+        function (data, status, headers, config) {
+            console.log(data);
+                $scope.ads = data.ads;
+                $scope.filteredUserAds = [],
+                    $scope.currentPage = 1,
+                    $scope.numPerPage = 4,
+                    $scope.maxSize = 5,
+                    $scope.bigTotalItems = data.numItems;
+
+                $scope.numPages = function () {
+                    return Math.ceil($scope.ads.length / $scope.numPerPage);
+                };
+
+                $scope.$watch('currentPage + numPerPage', function () {
+                    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+                        , end = begin + $scope.numPerPage;
+
+                });
+                notySuccess('doing sth');
+                     $scope.filteredUserAds.reload();
+            },
+            function (error, status, headers, config) {
+                notyError();
+            });
+}
+
+$scope.clearFilter = function(){
+    $route.reload();
+}
 
 
     $scope.deactivate = function (id) {

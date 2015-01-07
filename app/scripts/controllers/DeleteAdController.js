@@ -22,6 +22,9 @@ app.controller('DeleteAdController', function ($scope, adsData, $rootScope, $htt
         });
     };
 
+    $scope.cancel = function(){
+      $location.path('/user/ads');
+    };
 
     function notyError(){
          noty({

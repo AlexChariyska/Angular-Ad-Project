@@ -56,9 +56,9 @@
                  <div id="fileDisplayArea">
                      <img ng-src="{{ad.imageDataUrl}}" src="img\300px-No_image_available.svg.png"class="img-thumbnail">
                  </div>
-                  <button type="submit" class="btn btn-default" ng-click="changeImg(ad.id,ad)">Change image
+                  <button id="change-img" type="submit" class="btn btn-default" ng-click="changeImg(ad.id,ad)">Change image
                             </button>
-                 <button class="btn btn-default" ng-click="deleteImg(ad.id,ad)">Delete image</button>
+                 <button id="delete-img" class="btn btn-default" ng-click="deleteImg(ad.id,ad)">Delete image</button>
              </div>
              <div class="form-group row">
                     <div class="col-md-10 col-md-offset-2">

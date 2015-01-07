@@ -39,6 +39,10 @@ padding: 10px;
 	width: 100%;
 	height: 100%;
 }
+#change-img,#delete-img{
+	width: 120px;
+	margin: 5px;
+}
 #ad-town, #ad-category{
 	width: 80%;
 }

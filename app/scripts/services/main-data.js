@@ -25,6 +25,14 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/ads', $http.defaults.headers, {}, success, error);
     };
 
+    function getUsers(success, error) {
+        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/Users', $http.defaults.headers, {}, success, error);
+    };
+
+    function getUser(id, success, error) {
+        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/Users/'+id, $http.defaults.headers, {}, success, error);
+    };
+
     function getUserAds(success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads', $http.defaults.headers, {}, success, error);
     };
@@ -69,6 +77,10 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/admin/Ads/'+ id, $http.defaults.headers, {}, success, error);
     };
 
+    function deleteUser(username, success, error) {
+        return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/admin/User/'+ username, $http.defaults.headers, {}, success, error);
+    };
+
     function getAdminAd(id, success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/ads/'+ id, $http.defaults.headers, {}, success, error);
     };
@@ -88,6 +100,7 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
     function getAllTown(success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/Api/Towns', $http.defaults.headers, {}, success, error);
     };
+
     function getAllCategories(success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/categories', $http.defaults.headers, {}, success, error);
     };
@@ -120,13 +133,17 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         deleteAdAdmin:deleteAdAdmin,
         deleteAd:deleteAd,
         publishAgain:publishAgain,
-        getAd:getAd
+        getAd:getAd,
+        getUsers:getUsers,
+        getUser:getUser,
+        deleteUser:deleteUser
     }
 })
 
 
 app.service('idService', function() {
   var idSaved;
+  var objSaved={};
 
   var setId = function(id) {
       idSaved=id;
@@ -136,9 +153,19 @@ app.service('idService', function() {
       return idSaved;
   }
 
+  var setObj = function(obj) {
+      objSaved = obj;
+  }
+
+  var getObj = function(){
+      return objSaved;
+  }
+
   return {
     setId: setId,
-    getId: getId
+    getId: getId,
+    setObj: setObj,
+    getObj: getObj
   };
 
 });

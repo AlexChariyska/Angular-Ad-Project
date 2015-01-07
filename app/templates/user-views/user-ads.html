@@ -6,7 +6,7 @@
     </div>
     <div class="container well" ng-controller="UserAdsController">
         <div class="col-md-10">
-            <ul id="ul" ng-repeat="ad in filteredUserAds | filter:statusFilter">
+            <ul id="ul" ng-repeat="ad in filteredUserAds">
                 <li class="row">
                     <div class="col-md-12 clearfix">
                         <h3 class="pull-left">{{ad.title}}</h3>
@@ -56,6 +56,9 @@
                     </div>
                 </li>
             </ul>
+            <div ng-if="ads.length==0" class="box no-data">
+                No ads found.
+            </div>
         </div>
     </div>
     <div class="row">
