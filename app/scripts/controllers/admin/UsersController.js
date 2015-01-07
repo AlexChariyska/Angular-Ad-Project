@@ -27,7 +27,7 @@ app.controller('UsersController', function UsersController($scope, $http, adsDat
 			     })
 
 
-   $scope.predicate = '-username';
+$scope.predicate = '-username';
 	
 $scope.redirectToDeleteUser = function(id){
 	idService.setObj(id);

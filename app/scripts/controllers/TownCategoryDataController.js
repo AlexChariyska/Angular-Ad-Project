@@ -14,4 +14,5 @@ app.controller('TownCategoryDataController', function ($scope, adsData) {
         function (error, status, headers, config) {
             console.log(status, error);
         });
+    $scope.predicate = 'id';
 });
