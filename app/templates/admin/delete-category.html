@@ -3,12 +3,12 @@
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
-    <div class="col-md-6 col-md-offset-2" ng-controller="DeleteEditUser">
+    <div class="col-md-6 col-md-offset-2" ng-controller="DeleteTownCategoryController">
     <h3>Confirm Deleting Category?</h3>
   		<div class="well well-sm">
-            <strong>Category: </strong> {{user.category}}
+            <strong>Category: </strong> {{obj.name}}
         </div>
-       <button class="btn btn-default col-md-offset-4"ng-click="deleteUser(user.username)">Delete</button>
-	   <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+       <button class="btn btn-default col-md-offset-4"ng-click="delete('category',obj)">Delete</button>
+	   <button class="btn btn-default" ng-click="cancel('category')">Cancel</button>
     </div>
  </div>

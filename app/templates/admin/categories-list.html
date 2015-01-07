@@ -21,15 +21,14 @@
 		    <td>{{category.name}}</td>
 		    <td>
 		    	<button class="btn btn-default">Edit</button>
-		    	<button class="btn btn-default" ng-click="redirectToDeleteUser(user)">Delete</button>
+		    	<button class="btn btn-default" ng-click="redirectTo('category',category)">Delete</button>
 		    </td>
  		 </tr>
     </table>
-    </div>
     <div class="row">
-        <div class="col-md-12 col-md-offset-4 col-sm-offset-4">
-            <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
-                        max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
-        </div>
+        <div class="col-md-offset-5">
+			        <button class="btn btn-default">Create new category</button>
+		</div>
 	 </div>
+    </div>
 </div>

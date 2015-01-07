@@ -37,6 +37,10 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/admin/users-delete.html'
             }).when('/admin/categories/list', {
                 templateUrl: 'templates/admin/categories-list.html'
+            }).when('/admin/categories/delete', {
+                templateUrl: 'templates/admin/delete-category.html'
+            }).when('/admin/towns/delete', {
+                templateUrl: 'templates/admin/delete-town.html'
             }).when('/admin/towns/list', {
                 templateUrl: 'templates/admin/towns-list.html'
             }).otherwise({redirectTo: '/'})
