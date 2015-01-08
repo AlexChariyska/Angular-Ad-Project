@@ -30,14 +30,10 @@ function getAds(){
 }
 
 
-
-
-
 $scope.setStatus = function(status){
     var param='Status=' + status;
     adsData.getUserAdsWithParams(param,
         function (data, status, headers, config) {
-            console.log(data);
                 $scope.ads = data.ads;
                 $scope.filteredUserAds = [],
                     $scope.currentPage = 1,
@@ -68,7 +64,7 @@ $scope.clearFilter = function(){
 
 
     $scope.deactivate = function (id) {
-        adsData.deactivateAd( id ,
+        adsData.deactivate( 'http://softuni-ads.azurewebsites.net/api/user/ads/deactivate/' + id ,
             function (data, status, headers, config) {  
             notySuccess('deactivated your ad');
             $route.reload();
@@ -89,7 +85,7 @@ $scope.clearFilter = function(){
     };
 
    $scope.publishAgain = function (id) {
-        adsData.publishAgain( id ,
+        adsData.deactivate( 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/' + id ,
             function (data, status, headers, config) {
                 notySuccess('published again your ad');
                 $route.reload();

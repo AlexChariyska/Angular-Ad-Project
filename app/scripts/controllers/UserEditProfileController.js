@@ -14,7 +14,7 @@ adsData.getData('http://softuni-ads.azurewebsites.net/api/user/profile',
   $scope.update = function(userUpdated){
       var updated = JSON.stringify(userUpdated);
       debugger;
-      adsData.editProfile(updated,
+      adsData.editData('http://softuni-ads.azurewebsites.net/api/user/profile', updated,
             function (data, status, headers, config) {
               notySuccess("changed your profile ")
             },
@@ -26,7 +26,7 @@ adsData.getData('http://softuni-ads.azurewebsites.net/api/user/profile',
 
   $scope.changePassword = function(pass){
     var passNew = JSON.stringify(pass);
-    adsData.changePassword(passNew,
+    adsData.editData('http://softuni-ads.azurewebsites.net/api/user/changePassword', passNew,
         function (error, status, headers, config) {
           notySuccess("changed your password ");
         },

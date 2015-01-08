@@ -13,7 +13,7 @@ app.controller('DeleteEditController', function DeleteEditController($scope, $ht
         });
 
     $scope.delete = function (passedId) {
-	    adsData.deleteAdAdmin( passedId ,
+	    adsData.deleteData('http://softuni-ads.azurewebsites.net/api/admin/Ads/' + passedId,
 	        function (data, status, headers, config) {
 	        	notySuccess('deleted the ad!');
 	    },

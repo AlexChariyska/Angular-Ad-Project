@@ -29,7 +29,7 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 
 
 	$scope.approve = function(id){
-		adsData.approveAd(id, 
+		adsData.deactivate( 'http://softuni-ads.azurewebsites.net/api/admin/Ads/Approve/' + id, 
 				function (data, status, headers, config) {
 		           notySuccess('approved the ad!');
 		           $route.reload();
@@ -40,7 +40,7 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 	}
 
 	$scope.reject = function(id){
-		adsData.rejectAd(id, 
+		adsData.deactivate('http://softuni-ads.azurewebsites.net/api/admin/Ads/Reject/' + id, 
 			function (data, status, headers, config) {
 	           notySuccess('rejected the ad!');
 	           $route.reload(); 

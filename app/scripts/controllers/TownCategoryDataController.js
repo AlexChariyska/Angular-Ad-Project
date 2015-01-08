@@ -14,6 +14,7 @@ app.controller('TownCategoryDataController', function ($scope, adsData,idService
         function (error, status, headers, config) {
             console.log(status, error);
         });
+    
     $scope.predicate = 'id';
 
     $scope.redirectTo =function(place, data){

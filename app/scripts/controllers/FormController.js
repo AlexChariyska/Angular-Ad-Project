@@ -15,7 +15,7 @@ app.controller('FormController', function FormController($scope, adsData, $resou
     }
 
     $scope.login = function (ad) {
-        adsData.login(ad,
+        adsData.createData('http://softuni-ads.azurewebsites.net/api/user/login', ad,
             function (data, status, headers, config) {
 
                 noty({
@@ -54,7 +54,7 @@ app.controller('FormController', function FormController($scope, adsData, $resou
             'username':credentials.username,
             'password':credentials.password
         }
-        adsData.register(newObj,
+        adsData.createData('http://softuni-ads.azurewebsites.net/api/user/register', newObj,
             function (data, status, headers, config) {
                 $scope.login(logInData);
             },

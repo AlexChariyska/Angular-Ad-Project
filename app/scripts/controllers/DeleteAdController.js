@@ -5,16 +5,15 @@ app.controller('DeleteAdController', function ($scope, adsData, $rootScope, $htt
     adsData.getData( 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id,
           function (data, status, headers, config) {
                 $scope.ad=data;
-                console.log($scope.ad);
         },
         function (error, status, headers, config) {
             notyError();
         });
 
     $scope.delete = function (passedId) {
-        adsData.deleteAd( passedId ,
+        adsData.deleteData('http://softuni-ads.azurewebsites.net/api/user/ads/' + passedId ,
             function (data, status, headers, config) {
-            	notySuccess('deleted your ad!');
+            	notySuccess('deleted your ad');
                $location.path('/user/ads');
         },
         function (error, status, headers, config) {

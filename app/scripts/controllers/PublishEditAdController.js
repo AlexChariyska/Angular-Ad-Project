@@ -54,7 +54,7 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
     $scope.ad['imageDataUrl'] =$scope.changedImg;
     var newAd = JSON.stringify(ad);
    
-      adsData.publishAd(newAd,
+      adsData.createData('http://softuni-ads.azurewebsites.net/api/user/ads', newAd,
           function (data, status, headers, config) {
               notySuccess('published a new ad!')
               $route.reload();
@@ -67,7 +67,7 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
   $scope.deleteImg = function(passedId,ad){
     $scope.ad['changeimage'] = true;
     $scope.ad['imageDataUrl'] ='';
-    adsData.editUserAd( passedId ,ad,
+    adsData.editData( 'http://softuni-ads.azurewebsites.net/api/user/ads/' + passedId ,ad,
                 function (data, status, headers, config) {
                    notySuccess('deleted image');
                     $route.reload();
@@ -80,7 +80,7 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
   $scope.changeImg = function(passedId,ad){
    $scope.ad['changeimage'] =true;
    $scope.ad['imageDataUrl'] =$scope.changedImg;
-   adsData.editUserAd( passedId ,ad,
+   adsData.editData('http://softuni-ads.azurewebsites.net/api/user/ads/' + passedId, ad,
                 function (data, status, headers, config) {
                   notySuccess('changed the image!');
                   $route.reload();
@@ -91,7 +91,7 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
   }
 
     $scope.edit= function(passedId,ad){
-      adsData.editUserAd( passedId ,ad,
+      adsData.editData( 'http://softuni-ads.azurewebsites.net/api/user/ads/' + passedId ,ad,
                 function (data, status, headers, config) {
                   notySuccess('edit your ad!');
                   $route.reload();

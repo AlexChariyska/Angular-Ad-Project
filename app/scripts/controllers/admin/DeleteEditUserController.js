@@ -6,9 +6,9 @@ app.controller('DeleteEditUser', function DeleteEditUser($scope, $http, adsData,
 console.log($scope.user);
 
 $scope.deleteUser= function(username){
-	adsData.deleteUser(username, 
+	adsData.deleteData('http://softuni-ads.azurewebsites.net/api/admin/User/'+ username, 
 					function (data, status, headers, config) {
-		              notySuccess("You have successfully deleted the ad!");
+		              notySuccess("You have successfully deleted the user!");
 		              $location.path('/admin/users/list');
 			        },
 			        function (error, status, headers, config) {
