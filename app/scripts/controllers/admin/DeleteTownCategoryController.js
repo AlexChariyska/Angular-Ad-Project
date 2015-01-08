@@ -1,4 +1,4 @@
-app.controller('DeleteTownCategoryController', function ($scope, adsData,idService, $location) {
+app.controller('DeleteTownCategoryController', function ($scope,$route, adsData,idService, $location) {
 
 $scope.obj = idService.getObj();
 
@@ -14,15 +14,45 @@ $scope.obj = idService.getObj();
                             notyError();
                         }); 
                 $location.path('/admin/categories/list');
+                $route.reload();
                 break;
             case "town":
-                adsData.deleteData('http://softuni-ads.azurewebsites.net/api/admin/categories/'+data.id,
+                adsData.deleteData('http://softuni-ads.azurewebsites.net/api/admin/towns/'+data.id,
                        function (data, status, headers, config) {
                             notySuccess('deleted the town.');
                         },
                         function (error, status, headers, config) {
                             notyError();
                         }); 
+                $location.path('/admin/towns/list');
+                $route.reload();
+                break;
+            }
+    }
+
+    $scope.create = function(place, data){
+        var dataPassed= {name:data};
+        switch(place) {
+            case "category":
+                   adsData.createData('http://softuni-ads.azurewebsites.net/api/admin/Categories', dataPassed,
+                       function (data, status, headers, config) {
+                             notySuccess('created the category.');
+                        },
+                        function (error, status, headers, config) {
+                            notyError();
+                        }); 
+                $route.reload();
+                $location.path('/admin/categories/list');
+                break;
+            case "town":
+                adsData.createData('http://softuni-ads.azurewebsites.net/api/admin/towns', dataPassed,
+                       function (data, status, headers, config) {
+                            notySuccess('created the town.');
+                        },
+                        function (error, status, headers, config) {
+                            notyError();
+                        }); 
+                $route.reload();
                 $location.path('/admin/towns/list');
                 break;
             }

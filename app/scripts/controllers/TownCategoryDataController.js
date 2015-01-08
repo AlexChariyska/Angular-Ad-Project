@@ -26,6 +26,12 @@ app.controller('TownCategoryDataController', function ($scope, adsData,idService
                 idService.setObj(data);
                 $location.path('/admin/towns/delete');
                 break;
+            case "createTown":
+                $location.path('/admin/towns/create');
+                break;
+            case "createCategory":
+                $location.path('/admin/categories/create');
+                break;
             }
     }
     
