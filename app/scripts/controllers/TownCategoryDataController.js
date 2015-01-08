@@ -1,5 +1,5 @@
 app.controller('TownCategoryDataController', function ($scope, adsData,idService, $location) {
-    adsData.getAllTown(
+    adsData.getData('http://softuni-ads.azurewebsites.net/Api/Towns',
         function (data, status, headers, config) {
             $scope.towns = data;
         },
@@ -7,7 +7,7 @@ app.controller('TownCategoryDataController', function ($scope, adsData,idService
             console.log(status, error);
         });
 
-    adsData.getAllCategories(
+    adsData.getData('http://softuni-ads.azurewebsites.net/Api/Categories',
         function (data, status, headers, config) {
             $scope.categories = data;
         },

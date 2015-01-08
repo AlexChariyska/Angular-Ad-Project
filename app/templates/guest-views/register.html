@@ -43,11 +43,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="col-md-2 control-label">Phone</label>
+                            <label for="phone" class="col-md-2 control-label">Phone*</label>
 
                             <div class="col-md-10">
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone"
-                                       ng-model="credentials.phone">
+                                       ng-model="credentials.phone" required>
+                                <span ng-show="registerForm.phone.$dirty && registerForm.phone.$error.required" 
+                                class="text-danger">Phone is required!
+                                </span>
                             </div>
                         </div>
 

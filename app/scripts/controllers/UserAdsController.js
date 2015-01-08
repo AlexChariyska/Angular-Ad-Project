@@ -3,7 +3,7 @@ app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http
 
 getAds();
 function getAds(){
-    adsData.getUserAds(
+    adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads',
         function (data, status, headers, config) {
             $scope.ads = data.ads;
             $scope.filteredUserAds = [],

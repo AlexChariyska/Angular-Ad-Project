@@ -3,8 +3,9 @@
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
-    <div class="col-md-9 col-md-offset-1" ng-controller="UsersController">
+    <div class="col-md-10" ng-controller="UsersController">
     <table class="table table-striped table-hover">
+    <thead>
     	  <tr>
 		    <th>Username
 		    <a href="" ng-click="predicate = '-username'; reverse=false">&#65516;</a>
@@ -24,22 +25,27 @@
 		    </th>
 		    <th>Action</th>
  		 </tr>
+ 		 </thead>
+ 		 <tbody>
  		 <tr ng-repeat="user in filteredUsers | orderBy:predicate:reverse">
  		 	<td>{{user.username}}</td>
 		    <td>{{user.name}}</td>
 		    <td><a ng-href="mailto:{{user.email}}">{{user.email}}</a></td>
 		    <td>{{user.phoneNumber}}</td>
 		    <td>
-		    	<button class="btn btn-default">Edit</button>
-		    	<button class="btn btn-default" ng-click="redirectToDeleteUser(user)">Delete</button>
+		    	<button id="edit" class="btn btn-default" ng-click="redirectTo('edit', user)">Edit</button>
+		    	<button id="delete" class="btn btn-default" ng-click="redirectTo('delete', user)">Delete</button>
 		    </td>
  		 </tr>
-    </table>
-    </div>
-    <div class="row">
-        <div class="col-md-12 col-md-offset-4 col-sm-offset-4">
+ 		 </tbody>
+ 		 <tfoot>
+          <td colspan="3">
+            <div class="col-md-12 col-md-offset-4 col-sm-offset-4">
             <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
                         max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
-        </div>
-	 </div>
+        	</div>
+          </td>
+        </tfoot>
+    </table>
+    </div>
 </div>

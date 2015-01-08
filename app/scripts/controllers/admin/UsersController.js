@@ -1,38 +1,45 @@
 app.controller('UsersController', function UsersController($scope, $http, adsData, $route, $rootScope, $location, idService) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
-	adsData.getUsers(function (data, status, headers, config) {
+	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/Users',
+		function (data, status, headers, config) {
 		              $scope.users = data.users;
-		              console.log(data.users);
-		                $scope.filteredUsers = [],
-		                $scope.currentPage = 1,
-		                $scope.numPerPage = 20,
-		                $scope.maxSize = 5,
-		                $scope.bigTotalItems = data.numItems;
+		              $scope.filteredUsers = [],
+			           $scope.currentPage = 1,
+			           $scope.numPerPage = 4,
+			           $scope.maxSize = 5,
+			           $scope.bigTotalItems = data.numItems;
 
-			            $scope.numPages = function () {
-			                return Math.ceil($scope.users.length / $scope.numPerPage);
-			            };
+			        $scope.numPages = function () {
+			            return Math.ceil($scope.users.length / $scope.numPerPage);
+			        };
 
-			            $scope.$watch('currentPage + numPerPage', function () {
-			                var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-			                    , end = begin + $scope.numPerPage;
+			        $scope.$watch('currentPage + numPerPage', function () {
+			            var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+			                , end = begin + $scope.numPerPage;
 
-			            	 $scope.filteredUsers = $scope.users.slice(begin, end);
+			            $scope.filteredUsers = $scope.users.slice(begin, end);
+			        })
 
-			        },
-			        function (error, status, headers, config) {
-			            notyError();
-			        });
-			     })
+		        },
+		        function (error, status, headers, config) {
+		            notyError();
+		        });
 
+    $scope.predicate = '-username';
 
-$scope.predicate = '-username';
-	
-$scope.redirectToDeleteUser = function(id){
-	idService.setObj(id);
-    $location.path('/admin/users/delete');
-}
+    $scope.redirectTo =function(place, data){
+       switch(place) {
+            case "edit":
+                idService.setObj(data);
+                $location.path('/admin/users/edit');
+                break;
+            case "delete":
+                idService.setObj(data);
+                $location.path('/admin/users/delete');
+                break;
+            }
+    }
 
 	function notyError(){
 	         noty({

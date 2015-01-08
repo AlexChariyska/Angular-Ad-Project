@@ -17,25 +17,6 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
             });
     }
 
-    function getAllAds(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/ads', $http.defaults.headers, {}, success, error);
-    };
-
-    function getAdminAds(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/ads', $http.defaults.headers, {}, success, error);
-    };
-
-    function getUsers(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/Users', $http.defaults.headers, {}, success, error);
-    };
-
-    function getUser(id, success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/Users/'+id, $http.defaults.headers, {}, success, error);
-    };
-
-    function getUserAds(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads', $http.defaults.headers, {}, success, error);
-    };
 
     function getUserAdsWithParams(params, success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads?' + params, $http.defaults.headers, {}, success, error);
@@ -43,14 +24,6 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
 
     function editUserAd(id, data, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id, $http.defaults.headers, data, success, error);
-    };
-
-    function getAd(id, success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads/'+ id, $http.defaults.headers, {}, success, error);
-    };
-
-    function getUserProfile(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/profile', $http.defaults.headers, {}, success, error);
     };
 
     function editProfile(data, success, error) {
@@ -81,10 +54,6 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("DELETE", 'http://softuni-ads.azurewebsites.net/api/admin/User/'+ username, $http.defaults.headers, {}, success, error);
     };
 
-    function getAdminAd(id, success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/admin/ads/'+ id, $http.defaults.headers, {}, success, error);
-    };
-
     function publishAgain(id, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/user/ads/publishagain/'+ id, $http.defaults.headers, {}, success, error);
     };
@@ -95,14 +64,6 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
 
     function rejectAd(id, success, error) {
         return makeRequest("PUT", 'http://softuni-ads.azurewebsites.net/api/admin/Ads/Reject/'+ id, $http.defaults.headers, {}, success, error);
-    };
-
-    function getAllTown(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/Api/Towns', $http.defaults.headers, {}, success, error);
-    };
-
-    function getAllCategories(success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/categories', $http.defaults.headers, {}, success, error);
     };
 
     function deleteData(url, success, error) {
@@ -117,6 +78,10 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("PUT", url, $http.defaults.headers, data, success, error);
     };
 
+    function getData(url, success, error) {
+        return makeRequest("GET", url, $http.defaults.headers, {}, success, error);
+    };
+
     function login(data, success, error) {
         return makeRequest("POST", 'http://softuni-ads.azurewebsites.net/api/user/login', $http.defaults.headers, data, success, error);
     };
@@ -125,33 +90,24 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("POST", 'http://softuni-ads.azurewebsites.net/api/user/register', {}, data, success, error);
     };
     return {
-        getAllAds: getAllAds,
-        getAdminAds:getAdminAds,
-        getAdminAd:getAdminAd,
         getUserAdsWithParams:getUserAdsWithParams,
         publishAd:publishAd,
-        getUserProfile:getUserProfile,
         editUserAd:editUserAd,
         editProfile:editProfile,
         changePassword:changePassword,
-        getAllTown: getAllTown,
-        getAllCategories: getAllCategories,
         login: login,
         register: register,
-        getUserAds: getUserAds,
         deactivateAd:deactivateAd,
         approveAd:approveAd,
         rejectAd:rejectAd,
         deleteAdAdmin:deleteAdAdmin,
         deleteAd:deleteAd,
         publishAgain:publishAgain,
-        getAd:getAd,
-        getUsers:getUsers,
-        getUser:getUser,
         deleteUser:deleteUser,
         deleteData:deleteData,
         createData:createData,
-        editData:editData
+        editData:editData,
+        getData:getData
     }
 })
 

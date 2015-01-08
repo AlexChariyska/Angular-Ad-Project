@@ -10,7 +10,7 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
   var id = idService.getId();
   // Checks if there is an ad to display
   if(id){
-    adsData.getAd(  id,
+    adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads/' +  id,
           function (data, status, headers, config) {
                 $scope.ad=data;
         },

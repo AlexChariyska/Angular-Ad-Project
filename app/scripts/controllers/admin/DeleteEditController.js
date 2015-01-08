@@ -2,7 +2,7 @@ app.controller('DeleteEditController', function DeleteEditController($scope, $ht
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
 	var id = idService.getId();
-    adsData.getAdminAd(  id,
+    adsData.getData(  'http://softuni-ads.azurewebsites.net/api/admin/ads/' + id,
             function (data, status, headers, config) {
               $scope.ad = data;
               $scope.ad['date']=new Date(data.date);

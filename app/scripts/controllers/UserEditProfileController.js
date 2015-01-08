@@ -1,7 +1,7 @@
 app.controller('UserEditProfileController', function FormController($scope, adsData,$http, $rootScope) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
   
-adsData.getUserProfile(
+adsData.getData('http://softuni-ads.azurewebsites.net/api/user/profile',
         function (data, status, headers, config) {
           $scope.user=data;
         },

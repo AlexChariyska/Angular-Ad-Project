@@ -13,12 +13,12 @@ app.controller('AdsController', function AdsController($scope, $http, adsData, $
         return $scope.selected === item;
     };
 
-    adsData.getAllAds(
+    adsData.getData('http://softuni-ads.azurewebsites.net/api/ads',
         function (data, status, headers, config) {
             $scope.ads = data.ads;
             $scope.filteredAds = [],
                 $scope.currentPage = 1,
-                $scope.numPerPage = 4,
+                $scope.numPerPage = 8,
                 $scope.maxSize = 5,
                 $scope.bigTotalItems = data.numItems;
 

@@ -2,7 +2,7 @@ app.controller('DeleteAdController', function ($scope, adsData, $rootScope, $htt
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
     var id = idService.getId();
-    adsData.getAd(  id,
+    adsData.getData( 'http://softuni-ads.azurewebsites.net/api/user/ads/' + id,
           function (data, status, headers, config) {
                 $scope.ad=data;
                 console.log($scope.ad);

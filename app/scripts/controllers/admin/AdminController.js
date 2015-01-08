@@ -1,7 +1,7 @@
 app.controller('AdminController', function AdminController($scope, $http, adsData,idService, $route, $rootScope, $location) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
-	adsData.getAdminAds(
+	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/ads',
 	        function (data, status, headers, config) {
 	            $scope.ads = data.ads;
 	            $scope.filteredAds = [],

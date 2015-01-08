@@ -3,15 +3,16 @@
 var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
     .config(function ($routeProvider) {
         $routeProvider
-            .when('/login', {
-                templateUrl: 'templates/guest-views/login.html',
-                controller: 'FormController'
+            .when('/', {
+               templateUrl: 'templates/guest-views/main-guest-view.html',
+                controller: 'AdsController'
             }).when('/register', {
                 templateUrl: 'templates/guest-views/register.html',
                 controller: 'FormController'
-            }).when('/', {
-                templateUrl: 'templates/guest-views/main-guest-view.html',
-                controller: 'AdsController'
+            }).when('/login', {
+                templateUrl: 'templates/guest-views/login.html',
+                controller: 'FormController'
+                //Users redirects
             }).when('/user/home', {
                 templateUrl: 'templates/user-views/user-home-screen.html'
             }).when('/user/ads/publish', {
@@ -25,6 +26,7 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/user-views/edit-ad.html'
             }).when('/user/profile', {
                 templateUrl: 'templates/user-views/edit-user-profile.html'
+                //Admin redirects
             }).when('/admin/home', {
                 templateUrl: 'templates/admin/admin-home.html'
             }).when('/admin/ads/edit', {
@@ -35,22 +37,25 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/admin/users-list.html'
             }).when('/admin/users/delete', {
                 templateUrl: 'templates/admin/users-delete.html'
+            }).when('/admin/users/edit', {
+                templateUrl: 'templates/admin/users-edit.html'
+                // Category and town redirects:
             }).when('/admin/categories/list', {
-                templateUrl: 'templates/admin/categories-list.html'
+                templateUrl: 'templates/admin/category/categories-list.html'
             }).when('/admin/categories/delete', {
-                templateUrl: 'templates/admin/delete-category.html'
+                templateUrl: 'templates/admin/category/delete-category.html'
             }).when('/admin/towns/delete', {
-                templateUrl: 'templates/admin/delete-town.html'
+                templateUrl: 'templates/admin/town/delete-town.html'
             }).when('/admin/towns/list', {
-                templateUrl: 'templates/admin/towns-list.html'
+                templateUrl: 'templates/admin/town/towns-list.html'
             }).when('/admin/towns/create', {
-                templateUrl: 'templates/admin/create-town.html'
+                templateUrl: 'templates/admin/town/create-town.html'
             }).when('/admin/categories/create', {
-                templateUrl: 'templates/admin/create-category.html'
+                templateUrl: 'templates/admin/category/create-category.html'
             }).when('/admin/towns/edit', {
-                templateUrl: 'templates/admin/edit-town.html'
+                templateUrl: 'templates/admin/town/edit-town.html'
             }).when('/admin/categories/edit', {
-                templateUrl: 'templates/admin/edit-category.html'
+                templateUrl: 'templates/admin/category/edit-category.html'
             }).otherwise({redirectTo: '/'})
     }).run(function ($rootScope, $location) {
 
@@ -69,5 +74,4 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
             }
         });
     });
-
 
