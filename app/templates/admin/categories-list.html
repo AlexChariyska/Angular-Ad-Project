@@ -20,7 +20,7 @@
  		 	<td>{{category.id}}</td>
 		    <td>{{category.name}}</td>
 		    <td>
-		    	<button class="btn btn-default">Edit</button>
+		    	<button class="btn btn-default" ng-click="redirectTo('editCategory',category)">Edit</button>
 		    	<button class="btn btn-default" ng-click="redirectTo('category',category)">Delete</button>
 		    </td>
  		 </tr>

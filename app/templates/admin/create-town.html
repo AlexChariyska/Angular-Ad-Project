@@ -3,12 +3,14 @@
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
-    <div class="col-md-6 col-md-offset-2" ng-controller="DeleteTownCategoryController">
-    <h3>Create Town?</h3>
+    <form class="col-md-6 col-md-offset-2" name="form" ng-controller="TownCategoryFunctionalityController">
+        <h3>Create Town?</h3>
   		<div class="well well-sm">
-            <strong>Town: </strong> <input type="text" ng-model="town.name">
+            <label for="town">Town*: </label> <input type="text" id="town" name="town" ng-model="town.name" required> 
+              <span ng-show="form.town.$dirty && form.town.$error.required"
+                  class="text-danger">Town name is required</span>
         </div>
-       <button class="btn btn-default col-md-offset-4"ng-click="create('town',town.name)">Create</button>
+       <button class="btn btn-default col-md-offset-4" ng-disabled="form.$invalid" ng-click="create('town',town.name)">Create</button>
 	   <button class="btn btn-default" ng-click="cancel('town')">Cancel</button>
-    </div>
+    </form>
  </div>

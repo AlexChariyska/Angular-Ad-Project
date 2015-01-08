@@ -47,6 +47,10 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                 templateUrl: 'templates/admin/create-town.html'
             }).when('/admin/categories/create', {
                 templateUrl: 'templates/admin/create-category.html'
+            }).when('/admin/towns/edit', {
+                templateUrl: 'templates/admin/edit-town.html'
+            }).when('/admin/categories/edit', {
+                templateUrl: 'templates/admin/edit-category.html'
             }).otherwise({redirectTo: '/'})
     }).run(function ($rootScope, $location) {
 

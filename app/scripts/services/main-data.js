@@ -113,6 +113,10 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         return makeRequest("POST", url, $http.defaults.headers, data, success, error);
     };
 
+    function editData(url, data, success, error) {
+        return makeRequest("PUT", url, $http.defaults.headers, data, success, error);
+    };
+
     function login(data, success, error) {
         return makeRequest("POST", 'http://softuni-ads.azurewebsites.net/api/user/login', $http.defaults.headers, data, success, error);
     };
@@ -146,7 +150,8 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
         getUser:getUser,
         deleteUser:deleteUser,
         deleteData:deleteData,
-        createData:createData
+        createData:createData,
+        editData:editData
     }
 })
 

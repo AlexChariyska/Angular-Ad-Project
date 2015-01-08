@@ -1,6 +1,35 @@
-app.controller('DeleteTownCategoryController', function ($scope,$route, adsData,idService, $location) {
-
+app.controller('TownCategoryFunctionalityController', function ($scope,$route,$http,$rootScope, adsData,idService, $location) {
+$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 $scope.obj = idService.getObj();
+
+$scope.edit = function(place, data){
+     var dataPassed= JSON.stringify({name:data.name});
+        switch(place) {
+            case "category":
+                   adsData.editData('http://softuni-ads.azurewebsites.net/api/admin/categories/'+ data.id, dataPassed,
+                       function (data, status, headers, config) {
+                             notySuccess('edited the category.');
+                        },
+                        function (error, status, headers, config) {
+                            notyError();
+                        }); 
+                $route.reload();
+                $location.path('/admin/categories/list');
+                break;
+            case "town":
+                adsData.editData('http://softuni-ads.azurewebsites.net/api/admin/towns/'+ data.id, dataPassed,
+                       function (data, status, headers, config) {
+                            notySuccess('edited the town.');
+                        },
+                        function (error, status, headers, config) {
+                            notyError();
+                        }); 
+                $route.reload();
+                $location.path('/admin/towns/list');
+                break;
+            }
+    }
+
 
 
     $scope.delete = function(place, data){

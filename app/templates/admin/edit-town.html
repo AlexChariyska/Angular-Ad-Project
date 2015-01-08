@@ -1,0 +1,16 @@
+<div data-ng-include data-src="'templates/partials/navigation-logged.html'"></div>
+<div class="container well">
+    <div class="col-md-2">
+        <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
+    </div>
+    <form class="col-md-6 col-md-offset-2" ng-controller="TownCategoryFunctionalityController" name="editForm">
+    <h3>Edit Town?</h3>
+  		<div class="well well-sm">
+            <strong>Town*: </strong> <input type="text" name="town" ng-model="obj.name" required>
+            <span ng-show="editForm.town.$dirty && editForm.town.$error.required"
+                  class="text-danger">Town name is required</span>
+        </div>
+       <button class="btn btn-default col-md-offset-4" ng-disabled="editForm.$invalid" ng-click="edit('town',obj)">Edit</button>
+	   <button class="btn btn-default" ng-click="cancel('town')">Cancel</button>
+    </form>
+ </div>

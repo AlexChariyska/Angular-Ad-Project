@@ -20,7 +20,7 @@
 	 		 	<td>{{town.id}}</td>
 			    <td>{{town.name}}</td>
 			    <td>
-			    	<button class="btn btn-default">Edit</button>
+			    	<button class="btn btn-default" ng-click="redirectTo('editTown', town)">Edit</button>
 			    	<button class="btn btn-default" ng-click="redirectTo('town', town)">Delete</button>
 			    </td>
 	 		 </tr>
