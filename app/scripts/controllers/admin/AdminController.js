@@ -6,7 +6,7 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
 	            $scope.ads = data.ads;
 	            $scope.filteredAds = [],
 	                $scope.currentPage = 1,
-	                $scope.numPerPage = 4,
+	                $scope.numPerPage = 10,
 	                $scope.maxSize = 5,
 	                $scope.bigTotalItems = data.numItems;
 

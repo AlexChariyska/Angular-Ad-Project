@@ -1,7 +1,7 @@
 <div data-ng-include data-src="'templates/partials/navigation.html'"></div>
 <div class="container well">
     <div class="col-md-10 col-sm-12">
-        <ul id="ul" ng-repeat="ad in filteredAds | filter:town | filter:category">
+        <ul id="ul" ng-repeat="ad in users">
             <li class="row">
                 <div class="col-md-12 col-sm-12">
                     <h3 class="pull-left">{{ad.title}}</h3>
@@ -34,6 +34,15 @@
                 </div>
             </li>
         </ul>
+        <div class="row">
+        <div class="col-md-offset-5">
+            <ul class="pagination pagination-sm" total-items="totalItems">
+                  <li><a href="" ng-click="pageDecrease()">«</a></li>
+                  <li ng-repeat="i in list" ><a href="" ng-click="pageChanged(i)">{{i}}</a></li>
+                  <li><a href="" ng-click="pageIncrease()">»</a></li>
+            </ul>
+        </div>
+    </div>
     </div>
 
     <div class="col-md-2 col-sm-12" ng-controller="TownCategoryDataController">
@@ -52,12 +61,6 @@
             <a href="" class="list-group-item" ng-repeat="town in towns" ng-class="{active: isActive(town)}"
                ng-click="selectTown(town.id, town)">{{town.name}}
             </a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 col-md-offset-4 col-sm-offset-3">
-            <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
-                        max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
         </div>
     </div>
 </div>

@@ -74,4 +74,3 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
             }
         });
     });
-
