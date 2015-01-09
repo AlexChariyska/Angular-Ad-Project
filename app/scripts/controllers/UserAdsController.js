@@ -4,7 +4,6 @@ app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http
     $scope.ads = [];
     $scope.totalAds = 0;
     $scope.numPages=0;
-    var pageSize=10;
     $scope.itemsPerPage = 10;
     getResultsPage(1,status);
 
@@ -74,11 +73,9 @@ function getResultsPage(pageNumber) {
    getAds(pageNumber);
 }
 
-
-$scope.setStatus = function(status){
-     getAds(1,status)
-    
-}
+/*$scope.setStatus = function(status){
+     $scope.status = status;  
+}*/
 
 $scope.clearFilter = function(){
     $route.reload();

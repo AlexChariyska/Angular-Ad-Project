@@ -2,21 +2,13 @@
 	position: relative;
 	top:103px;
 }
+#username-nav{
+	top: 15px;
+	font-size: 16px;
+	font-weight: bold;
+	right: 30px;
+}
 
-@media (max-width: 730px) {
-  .form-fieldset{
-		position: relative;
-		top:52px;
-	}
-	.status-panel{
-	  top: -73px;
-	}
-}
-@media (min-width: 731px) {
-	.status-panel{
-		top: -5px;
-	}
-}
 .info{
 	width: 90%;
 	float: right;
@@ -24,17 +16,23 @@
 	background-color: #1C1E22;
 	padding: 5px;
 }
+
 #ul{
 	list-style:none;
 	padding: 0 0 0 0;
 
 }
+
 #ul li{
 background-color: #3D4248;
 border-radius: 5px;
 padding: 10px;
-	
 }
+
+.pagination{
+	text-align: center;
+}
+
 .img-thumbnail{
 	width: 100%;
 	height: 100%;
@@ -60,14 +58,6 @@ padding: 10px;
 #user-navigation, #status-navigation, #admin-navigation{
 	margin-bottom: 10px;
 	text-align: center;
-}
-/* output{
-	padding-top: 0px;
-} */
-@media (max-width: 991px){
-	.img-thumbnail{
-		margin-bottom: 10px;
-	}
 }
 
 label.filebutton{
@@ -96,4 +86,26 @@ label span input {
     _cursor: hand;
     margin: 0;
     padding:0;
+}
+
+@media (max-width: 991px){
+	.img-thumbnail{
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 730px) {
+  .form-fieldset{
+		position: relative;
+		top:52px;
+	}
+	.status-panel{
+	  top: -73px;
+	}
+}
+
+@media (min-width: 731px) {
+	.status-panel{
+		top: -5px;
+	}
 }

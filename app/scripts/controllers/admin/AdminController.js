@@ -21,8 +21,6 @@ function ads(pageNumber){
 		        for (var i=1;i<=$scope.numPages;i++){
 		                $scope.list.push(i);
 		           }
-
-
 	        },
 	        function (error, status, headers, config) {
 	            notyError("loading ads");

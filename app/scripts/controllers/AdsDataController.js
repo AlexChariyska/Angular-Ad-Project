@@ -9,18 +9,18 @@ app.controller('AdsController', function AdsController($scope, $http, adsData, $
         current: 1
     };
 
-    $scope.selectTown = function (id,item) {
+/*    $scope.selectTown = function (id,item) {
         $scope.town = {townId: id};
     };
 
     $scope.selectCategory = function (id, item) {
         $scope.category = {categoryId: id};
         $scope.selected = item;
-    };
+    };*/
 
-    $scope.isActive = function (item) {
+/*    $scope.isActive = function (item) {
         return $scope.selected === item;
-    };
+    };*/
 
 function ads(pageNumber){
     adsData.getData('http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
@@ -43,6 +43,7 @@ function ads(pageNumber){
             });
         });
 }
+
     $scope.pageChanged = function(newPage) {
         $scope.selectedPage = newPage;
         $scope.currentPage=newPage;

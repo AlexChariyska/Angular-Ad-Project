@@ -9,8 +9,8 @@
   </div>
   <div class="navbar-collapse navbar-responsive-collapse collapse" aria-expanded="false" style="height: 1px;">
     <ul class="nav navbar-nav navbar-right">
-       <li>
-        <a href="#/user/profile">{{loggedUser.username}}</a>
+       <li id="username-nav">
+        {{loggedUser.username}}
       </li>
       <li>
          <a href="" ng-click="logout()">Logout</a>

@@ -16,11 +16,6 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
                 error(data, status, headers(), config);
             });
     }
-
-
-    function getUserAdsWithParams(params, success, error) {
-        return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads?' + params, $http.defaults.headers, {}, success, error);
-    };
     
     // This function activates/deactivates the ads.
     function deactivate(url, success, error) {
@@ -44,7 +39,6 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
     };
 
     return {
-        getUserAdsWithParams:getUserAdsWithParams,
         deleteData:deleteData,
         createData:createData,
         editData:editData,
@@ -81,4 +75,23 @@ app.service('idService', function() {
     getObj: getObj
   };
 
+});
+
+
+app.filter('isStatus', function() {
+  return function(input, status) {
+    var out = [];
+      for (var i = 0; i < input.length; i++){
+        debugger
+          if(input[i].status === status){
+              out.push(input[i]);
+            }
+
+          if(status === "all"){
+              out.push(input[i]);
+          }
+      }
+      debugger;      
+    return out;
+  };
 });

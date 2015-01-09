@@ -1,25 +1,14 @@
 app.controller('PublishAdController', function FormController($scope, $http, $rootScope, $route, adsData, idService) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
+
 	$scope.ad={
 		'title':'',
 		'text':'',
 		'imageDataUrl':'',
 		'townId':'',
 		'categoryId':''
-	};
-  var id = idService.getId();
-  // Checks if there is an ad to display
-  if(id){
-    adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads/' +  id,
-          function (data, status, headers, config) {
-                $scope.ad=data;
-        },
-        function (error, status, headers, config) {
-            notyError();
-        });
-  }
-
-      /* Function for live prereview of image */
+	}; 
+	  /* Function for live prereview of image */
   var fileInput = document.getElementById('fileInput');
   var fileDisplayArea = document.getElementById('fileDisplayArea');
 
@@ -49,7 +38,6 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
     }
 
   });
-  
   $scope.adNewAd=function(ad){
     $scope.ad['imageDataUrl'] =$scope.changedImg;
     var newAd = JSON.stringify(ad);
@@ -89,19 +77,7 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
                   notyError('There was a problem with editing the ad!');
               });
   }
-
-    $scope.edit= function(passedId,ad){
-      adsData.editData( 'http://softuni-ads.azurewebsites.net/api/user/ads/' + passedId ,ad,
-                function (data, status, headers, config) {
-                  notySuccess('edit your ad!');
-                  $route.reload();
-            },
-            function (error, status, headers, config) {
-                notyError('There was a problem with editing the ad!');
-            });
-    };
-
-    $scope.reset = function () {
+     $scope.reset = function () {
 	    return $scope.ad = {
 	 		'title':'',
 			'text':'',
@@ -132,4 +108,4 @@ app.controller('PublishAdController', function FormController($scope, $http, $ro
     };
 
 });
-
+  

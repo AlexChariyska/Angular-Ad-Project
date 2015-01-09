@@ -3,8 +3,6 @@ app.controller('DeleteEditUser', function DeleteEditUser($scope, $http, adsData,
 
  	$scope.user = idService.getObj();
 
-console.log($scope.user);
-
 $scope.deleteUser= function(username){
 	adsData.deleteData('http://softuni-ads.azurewebsites.net/api/admin/User/'+ username, 
 					function (data, status, headers, config) {

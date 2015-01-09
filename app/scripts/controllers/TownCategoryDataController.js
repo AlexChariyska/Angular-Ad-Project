@@ -1,4 +1,5 @@
 app.controller('TownCategoryDataController', function ($scope, adsData, idService, $location) {
+    
     adsData.getData('http://softuni-ads.azurewebsites.net/Api/Towns',
         function (data, status, headers, config) {
             $scope.towns = data;
