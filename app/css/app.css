@@ -8,6 +8,9 @@
 	font-weight: bold;
 	right: 30px;
 }
+.user-ad{
+widht:80%;
+} 
 
 .info{
 	width: 90%;
@@ -100,7 +103,7 @@ label span input {
 		top:52px;
 	}
 	.status-panel{
-	  top: -73px;
+	  top: 0px;
 	}
 }
 

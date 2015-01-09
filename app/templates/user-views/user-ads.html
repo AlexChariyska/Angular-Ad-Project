@@ -6,7 +6,7 @@
     </div>
     <div class="container well" ng-controller="UserAdsController">
         <div class="col-md-10">
-            <ul id="ul" ng-repeat="ad in ads | isStatus:status">
+            <ul id="ul" ng-repeat="ad in ads ">
                 <li class="row">
                     <div class="col-md-12 clearfix">
                         <h3 class="pull-left">{{ad.title}}</h3>
@@ -17,7 +17,7 @@
                             <img src="img\300px-No_image_available.svg.png" class="img-thumbnail"
                                  ng-src="{{ad.imageDataUrl}}">
                         </div>
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-6 col-sm-6 user-ad">
                             <div class="row">
                                 <div class="panel panel-default">
                                     <div class="panel-body">

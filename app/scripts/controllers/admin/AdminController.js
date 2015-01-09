@@ -10,8 +10,8 @@ app.controller('AdminController', function AdminController($scope, $http, adsDat
         current: 1
     };
 
-function ads(pageNumber){
-	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
+function ads(url){
+	adsData.getData(url,
 	        function (data, status, headers, config) {
 	            $scope.ads = data.ads;
 	            $scope.totalItems = data.numItems;
@@ -52,9 +52,23 @@ function ads(pageNumber){
     };
 
     function getResultsPage(pageNumber) {
-       ads(pageNumber);
+         if(sessionStorage.getItem('status') ==null){
+        	ads('http://softuni-ads.azurewebsites.net/api/admin/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage);
+	    }else{
+	        var status= sessionStorage.getItem('status');
+	        ads('http://softuni-ads.azurewebsites.net/api/admin/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage+'&status='+ status);
+	    }
     }
 
+$scope.setStatus = function(input){
+    sessionStorage.setItem('status',input);
+    $route.reload();
+}
+
+$scope.clearFilter = function(){
+    sessionStorage.clear();
+    $route.reload();
+}
 
 	$scope.approve = function(id){
 		adsData.deactivate( 'http://softuni-ads.azurewebsites.net/api/admin/Ads/Approve/' + id, 

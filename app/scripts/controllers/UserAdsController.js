@@ -12,9 +12,8 @@ app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http
     };
 
 
-function getAds(pageNumber,status){
-    if(status === undefined){
-        adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
+function getAds(url){
+        adsData.getData(url,
             function (data, status, headers, config) {
                 $scope.ads = data.ads;
                 $scope.totalItems = data.numItems;
@@ -28,23 +27,6 @@ function getAds(pageNumber,status){
             function (error, status, headers, config) {
                 notyError();
             });
-        }else {
-              adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage+'&status='+ status,
-            function (data, status, headers, config) {
-                console.log(data);
-                $scope.ads = data.ads;
-                $scope.totalItems = data.numItems;
-                $scope.numPages= data.numPages;
-                $scope.list = [];
-
-                for (var i=1;i<=$scope.numPages;i++){
-                    $scope.list.push(i);
-                }
-            },
-            function (error, status, headers, config) {
-                notyError();
-            });
-        }
 }
 
 $scope.pageChanged = function(newPage) {
@@ -63,21 +45,29 @@ $scope.pageIncrease = function() {
     getResultsPage($scope.currentPage);
 };
 
-$scope.selectedIndex = 0;
+    $scope.selected = 0;
 
-$scope.isActivePage = function (item) {
-    return $scope.selectedPage === item;
-};
+    $scope.select= function(index) {
+       $scope.selected = index; 
+    };
 
 function getResultsPage(pageNumber) {
-   getAds(pageNumber);
+
+    if(sessionStorage.getItem('status') ==null){
+        getAds('http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage);
+    }else{
+        var status= sessionStorage.getItem('status');
+        getAds('http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage+'&status='+ status);
+    }
 }
 
-/*$scope.setStatus = function(status){
-     $scope.status = status;  
-}*/
+$scope.setStatus = function(input){
+    sessionStorage.setItem('status',input);
+    $route.reload();
+}
 
 $scope.clearFilter = function(){
+    sessionStorage.clear();
     $route.reload();
 }
 

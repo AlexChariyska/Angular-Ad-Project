@@ -1,14 +1,14 @@
 <div ng-controller="UserAdsController" id="status-navigation">
     <h3>My Ads</h3>
-      <ul class="nav nav-pills nav-stacked" ng-model="status">
-         <li class="active">
-          <a href="" ng-click="status=all">All</a>
+      <ul class="nav nav-pills nav-stacked">
+         <li>
+          <a href="" ng-click="clearFilter()">All</a>
         </li>
           <li>
-           <a href="" ng-click="status=waitingApproval">Waiting Approval</a>
+           <a href="" ng-click="setStatus('WaitingApproval')">Waiting Approval</a>
         </li>
           <li>
-           <a href="" ng-click="status=Published">Published</a>
+           <a href="" ng-click="setStatus('Published')">Published</a>
         </li>
         <li>
            <a href="" ng-click="setStatus('Inactive')">Inactive</a>

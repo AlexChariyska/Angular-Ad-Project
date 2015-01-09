@@ -76,22 +76,3 @@ app.service('idService', function() {
   };
 
 });
-
-
-app.filter('isStatus', function() {
-  return function(input, status) {
-    var out = [];
-      for (var i = 0; i < input.length; i++){
-        debugger
-          if(input[i].status === status){
-              out.push(input[i]);
-            }
-
-          if(status === "all"){
-              out.push(input[i]);
-          }
-      }
-      debugger;      
-    return out;
-  };
-});
