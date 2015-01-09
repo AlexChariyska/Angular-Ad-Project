@@ -2,7 +2,6 @@ app.controller('AdsController', function AdsController($scope, $http, adsData, $
     $scope.ads = [];
     $scope.totalAds = 0;
     $scope.numPages=0;
-    var pageSize=10;
     $scope.itemsPerPage = 10; 
     getResultsPage(1);
 
@@ -23,10 +22,10 @@ app.controller('AdsController', function AdsController($scope, $http, adsData, $
         return $scope.selected === item;
     };
 
-function Ads(pageNumber){
+function ads(pageNumber){
     adsData.getData('http://softuni-ads.azurewebsites.net/api/Ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
         function (data, status, headers, config) {
-            $scope.users = data.ads;
+            $scope.ads = data.ads;
             $scope.totalItems = data.numItems;
             $scope.numPages= data.numPages;
             $scope.list = [];
@@ -35,7 +34,13 @@ function Ads(pageNumber){
             }
         },
         function (error, status, headers, config) {
-            console.log(status, error);
+            noty({
+               text: 'Thre was a problem with loading the data!',
+               layout: 'topCenter',
+               closeWith: ['click', 'hover'],
+               type: 'error',
+               timeout:2000
+            });
         });
 }
     $scope.pageChanged = function(newPage) {
@@ -54,13 +59,13 @@ function Ads(pageNumber){
         getResultsPage($scope.currentPage);
     };
 
-    $scope.selectedIndex = 0;
+    $scope.selected = 0;
 
-    $scope.isActivePage = function (item) {
-        return $scope.selectedPage === item;
+    $scope.select= function(index) {
+       $scope.selected = index; 
     };
 
     function getResultsPage(pageNumber) {
-       Ads(pageNumber);
-}
+       ads(pageNumber);
+    }
 })

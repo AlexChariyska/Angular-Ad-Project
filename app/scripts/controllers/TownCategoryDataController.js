@@ -1,4 +1,4 @@
-app.controller('TownCategoryDataController', function ($scope, adsData,idService, $location) {
+app.controller('TownCategoryDataController', function ($scope, adsData, idService, $location) {
     adsData.getData('http://softuni-ads.azurewebsites.net/Api/Towns',
         function (data, status, headers, config) {
             $scope.towns = data;
@@ -16,6 +16,7 @@ app.controller('TownCategoryDataController', function ($scope, adsData,idService
         });
     
     $scope.predicate = 'id';
+
 
     $scope.redirectTo =function(place, data){
        switch(place) {

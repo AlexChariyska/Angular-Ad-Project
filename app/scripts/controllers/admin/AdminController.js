@@ -1,31 +1,61 @@
-app.controller('AdminController', function AdminController($scope, $http, adsData,idService, $route, $rootScope, $location) {
+app.controller('AdminController', function AdminController($scope, $http, adsData ,idService, $route, $rootScope, $location) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
+	$scope.ads = [];
+    $scope.totalAds = 0;
+    $scope.numPages=0;
+    $scope.itemsPerPage = 10; 
+    getResultsPage(1);
 
-	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/ads',
+    $scope.pagination = {
+        current: 1
+    };
+
+function ads(pageNumber){
+	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
 	        function (data, status, headers, config) {
 	            $scope.ads = data.ads;
-	            $scope.filteredAds = [],
-	                $scope.currentPage = 1,
-	                $scope.numPerPage = 10,
-	                $scope.maxSize = 5,
-	                $scope.bigTotalItems = data.numItems;
+	            $scope.totalItems = data.numItems;
+	     	    $scope.numPages= data.numPages;
+		        $scope.list = [];
 
-	            $scope.numPages = function () {
-	                return Math.ceil($scope.ads.length / $scope.numPerPage);
-	            };
+		        for (var i=1;i<=$scope.numPages;i++){
+		                $scope.list.push(i);
+		           }
 
-	            $scope.$watch('currentPage + numPerPage', function () {
-	                var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-	                    , end = begin + $scope.numPerPage;
 
-	                $scope.filteredAds = $scope.ads.slice(begin, end);
-
-	            });
 	        },
 	        function (error, status, headers, config) {
 	            notyError("loading ads");
 	        }
 	    );
+}
+
+    //Paging
+  $scope.pageChanged = function(newPage) {
+        $scope.selectedPage = newPage;
+        $scope.currentPage=newPage;
+        getResultsPage(newPage);
+    };
+
+    $scope.pageDecrease = function() {
+        $scope.currentPage-=1;
+        getResultsPage($scope.currentPage);
+    };
+    
+    $scope.pageIncrease = function() {
+        $scope.currentPage+=1;
+        getResultsPage($scope.currentPage);
+    };
+
+    $scope.selected = 0;
+
+    $scope.select= function(index) {
+       $scope.selected = index; 
+    };
+
+    function getResultsPage(pageNumber) {
+       ads(pageNumber);
+    }
 
 
 	$scope.approve = function(id){

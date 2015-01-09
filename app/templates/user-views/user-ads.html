@@ -6,7 +6,7 @@
     </div>
     <div class="container well" ng-controller="UserAdsController">
         <div class="col-md-10">
-            <ul id="ul" ng-repeat="ad in filteredUserAds">
+            <ul id="ul" ng-repeat="ad in ads">
                 <li class="row">
                     <div class="col-md-12 clearfix">
                         <h3 class="pull-left">{{ad.title}}</h3>
@@ -62,9 +62,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12 col-md-offset-4 col-sm-offset-4">
-            <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
-                        max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
+        <div class="col-md-offset-5">
+            <div data-ng-include data-src="'templates/pagination/pagination.html'"></div>
         </div>
     </div>
 </div>

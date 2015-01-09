@@ -1,31 +1,32 @@
 app.controller('UsersController', function UsersController($scope, $http, adsData, $route, $rootScope, $location, idService) {
 	$http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
+	$scope.ads = [];
+    $scope.totalAds = 0;
+    $scope.numPages=0;
+    $scope.itemsPerPage = 20; 
+    getResultsPage(1);
 
-	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/Users',
+    $scope.pagination = {
+        current: 1
+    };
+
+function users(pageNumber){
+	adsData.getData('http://softuni-ads.azurewebsites.net/api/admin/Users?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
 		function (data, status, headers, config) {
 		              $scope.users = data.users;
-		              $scope.filteredUsers = [],
-			           $scope.currentPage = 1,
-			           $scope.numPerPage = 4,
-			           $scope.maxSize = 5,
-			           $scope.bigTotalItems = data.numItems;
+		              $scope.totalItems = data.numItems;
+			          $scope.numPages= data.numPages;
+			          $scope.list = [];
 
-			        $scope.numPages = function () {
-			            return Math.ceil($scope.users.length / $scope.numPerPage);
-			        };
-
-			        $scope.$watch('currentPage + numPerPage', function () {
-			            var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-			                , end = begin + $scope.numPerPage;
-
-			            $scope.filteredUsers = $scope.users.slice(begin, end);
-			        })
+			          for (var i=1;i<=$scope.numPages;i++){
+			                $scope.list.push(i);
+			            }
 
 		        },
 		        function (error, status, headers, config) {
 		            notyError();
 		        });
-
+}
     $scope.predicate = '-username';
 
     $scope.redirectTo =function(place, data){
@@ -39,6 +40,32 @@ app.controller('UsersController', function UsersController($scope, $http, adsDat
                 $location.path('/admin/users/delete');
                 break;
             }
+    }
+    //Paging
+  $scope.pageChanged = function(newPage) {
+        $scope.selectedPage = newPage;
+        $scope.currentPage=newPage;
+        getResultsPage(newPage);
+    };
+
+    $scope.pageDecrease = function() {
+        $scope.currentPage-=1;
+        getResultsPage($scope.currentPage);
+    };
+    
+    $scope.pageIncrease = function() {
+        $scope.currentPage+=1;
+        getResultsPage($scope.currentPage);
+    };
+
+    $scope.selected = 0;
+
+    $scope.select= function(index) {
+       $scope.selected = index; 
+    };
+
+    function getResultsPage(pageNumber) {
+       users(pageNumber);
     }
 
 	function notyError(){

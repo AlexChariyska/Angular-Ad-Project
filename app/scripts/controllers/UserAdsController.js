@@ -1,61 +1,83 @@
 app.controller('UserAdsController', function ($scope, adsData, $rootScope, $http, $route,$location,idService) {
     $http.defaults.headers.common['Authorization'] = $rootScope.loggedUser.accessToken;
 
-getAds();
-function getAds(){
-    adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads',
-        function (data, status, headers, config) {
-            $scope.ads = data.ads;
-            $scope.filteredUserAds = [],
-                $scope.currentPage = 1,
-                $scope.numPerPage = 4,
-                $scope.maxSize = 5,
-                $scope.bigTotalItems = data.numItems;
+    $scope.ads = [];
+    $scope.totalAds = 0;
+    $scope.numPages=0;
+    var pageSize=10;
+    $scope.itemsPerPage = 10;
+    getResultsPage(1,status);
 
-            $scope.numPages = function () {
-                return Math.ceil($scope.ads.length / $scope.numPerPage);
-            };
-
-            $scope.$watch('currentPage + numPerPage', function () {
-                var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                    , end = begin + $scope.numPerPage;
-
-                $scope.filteredUserAds = $scope.ads.slice(begin, end);
-
-            });
-        },
-        function (error, status, headers, config) {
-            notyError();
-        });
-}
+    $scope.pagination = {
+        current: 1
+    };
 
 
-$scope.setStatus = function(status){
-    var param='Status=' + status;
-    adsData.getUserAdsWithParams(param,
-        function (data, status, headers, config) {
+function getAds(pageNumber,status){
+    if(status === undefined){
+        adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage,
+            function (data, status, headers, config) {
                 $scope.ads = data.ads;
-                $scope.filteredUserAds = [],
-                    $scope.currentPage = 1,
-                    $scope.numPerPage = 4,
-                    $scope.maxSize = 5,
-                    $scope.bigTotalItems = data.numItems;
+                $scope.totalItems = data.numItems;
+                $scope.numPages= data.numPages;
+                $scope.list = [];
 
-                $scope.numPages = function () {
-                    return Math.ceil($scope.ads.length / $scope.numPerPage);
-                };
-
-                $scope.$watch('currentPage + numPerPage', function () {
-                    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                        , end = begin + $scope.numPerPage;
-
-                });
-                notySuccess('doing sth');
-                     $scope.filteredUserAds.reload();
+                for (var i=1;i<=$scope.numPages;i++){
+                    $scope.list.push(i);
+                }
             },
             function (error, status, headers, config) {
                 notyError();
             });
+        }else {
+              adsData.getData('http://softuni-ads.azurewebsites.net/api/user/ads?StartPage=' + pageNumber +'&pageSize='+ $scope.itemsPerPage+'&status='+ status,
+            function (data, status, headers, config) {
+                console.log(data);
+                $scope.ads = data.ads;
+                $scope.totalItems = data.numItems;
+                $scope.numPages= data.numPages;
+                $scope.list = [];
+
+                for (var i=1;i<=$scope.numPages;i++){
+                    $scope.list.push(i);
+                }
+            },
+            function (error, status, headers, config) {
+                notyError();
+            });
+        }
+}
+
+$scope.pageChanged = function(newPage) {
+    $scope.selectedPage = newPage;
+    $scope.currentPage = newPage;
+    getResultsPage(newPage);
+};
+
+$scope.pageDecrease = function() {
+    $scope.currentPage-=1;
+    getResultsPage($scope.currentPage);
+};
+
+$scope.pageIncrease = function() {
+    $scope.currentPage+=1;
+    getResultsPage($scope.currentPage);
+};
+
+$scope.selectedIndex = 0;
+
+$scope.isActivePage = function (item) {
+    return $scope.selectedPage === item;
+};
+
+function getResultsPage(pageNumber) {
+   getAds(pageNumber);
+}
+
+
+$scope.setStatus = function(status){
+     getAds(1,status)
+    
 }
 
 $scope.clearFilter = function(){

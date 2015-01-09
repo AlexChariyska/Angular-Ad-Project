@@ -21,7 +21,8 @@ app.factory('adsData', function adsData($resource, $http, $rootScope) {
     function getUserAdsWithParams(params, success, error) {
         return makeRequest("GET", 'http://softuni-ads.azurewebsites.net/api/user/ads?' + params, $http.defaults.headers, {}, success, error);
     };
-
+    
+    // This function activates/deactivates the ads.
     function deactivate(url, success, error) {
         return makeRequest("PUT", url, $http.defaults.headers, {}, success, error);
     };

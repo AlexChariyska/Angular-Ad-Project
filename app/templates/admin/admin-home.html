@@ -5,7 +5,7 @@
         <div data-ng-include data-src="'templates/partials/status-filters.html'"></div>
     </div>
     <div class="col-md-8">
-        <ul id="ul" ng-repeat="ad in filteredAds">
+        <ul id="ul" ng-repeat="ad in ads">
             <li class="row">
                 <div class="col-md-12 col-sm-12">
                     <h3 class="pull-left">{{ad.title}}</h3>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
                 <div class="row col-md-offset-4 col-sm-offset-4">
-	                <button class="btn btn-default" ng-click="approve(ad.id)">Approve</button>
+	                <button class="btn btn-default" ng-show="ad.status!=='Published'" ng-click="approve(ad.id)">Approve</button>
 	                <button class="btn btn-default" ng-click="reject(ad.id)">Reject</button>
 	                <button class="btn btn-default" ng-click="editRedirect(ad.id)">Edit</button>
 	                <button class="btn btn-default" ng-click="deleteRedirect(ad.id)">Delete</button>
@@ -98,10 +98,9 @@
         	</div>
         </div>
     </div>
-        <div class="row">
-		        <div class="col-md-12 col-md-offset-4 col-sm-offset-4">
-		            <pagination total-items="bigTotalItems" items-per-page="numPerPage" ng-model="currentPage"
-		                        max-size="maxSize" class="pagination-sm" boundary-links="true"></pagination>
-		        </div>
-   		 </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+        <div data-ng-include data-src="'templates/pagination/pagination.html'"></div>
+        </div>
+        </div>
     </div>
