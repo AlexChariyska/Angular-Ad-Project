@@ -4,20 +4,24 @@
         <div data-ng-include data-src="'templates/partials/side-navigation.html'"></div>
  </div>
     <div class="col-md-7 col-sm-12 col-md-offset-2">
-        <form class="form-horizontal" ng-controller="EditAdController">
+        <form class="form-horizontal" name="editAd" ng-controller="EditAdController">
         <div class="row">
             <legend>Edit Ad?</legend>
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="title" class="col-md-2 control-label">Title: </label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="title" name="title" ng-model="ad.title">
+                        <input type="text" class="form-control" id="title" name="title" ng-model="ad.title" required>
+                        <span ng-show="editAd.title.$error.required"
+                                          class="text-danger">Title is required!</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="textArea" class="col-md-2 control-label">Text: </label>
                     <div class="col-md-10">
-                        <textarea class="form-control" rows="3" id="textArea" ng-model="ad.text"></textarea>
+                        <textarea class="form-control" name="text" rows="3" id="textArea" ng-model="ad.text" required></textarea>
+                        <span ng-show="editAd.text.$error.required"
+                                          class="text-danger">Ad content is required!</span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -62,7 +66,7 @@
              </div>
              <div class="form-group row">
                     <div class="col-md-10 col-md-offset-2">
-                        <button type="submit" class="btn btn-primary" ng-click="edit(ad.id,ad)">Edit
+                        <button type="submit" class="btn btn-primary" ng-disabled="editAd.$invalid" ng-click="edit(ad.id,ad)">Edit
                         </button>
                         <button class="btn btn-default" ng-click="reset()">Cancel</button>
                     </div>

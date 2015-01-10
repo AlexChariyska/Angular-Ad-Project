@@ -4,30 +4,34 @@
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
     <div class="col-md-9 col-md-offset-1">
-        <form class="form-horizontal" ng-controller="DeleteEditController">
+        <form class="form-horizontal" name="editAd" ng-controller="DeleteEditController">
             <div class="row">
                 <legend>Edit Ad?</legend>
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label for="title" class="col-md-2 control-label">Title*: </label>
+                        <label for="title" class="col-md-3 control-label">Title*: </label>
 
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <input type="text" class="form-control" id="title" name="title" ng-model="ad.title"
                                    required>
+                            <span ng-show="editAd.title.$error.required"
+                                    class="text-danger">Ad title is required!</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="textArea" class="col-md-2 control-label">Text*: </label>
+                        <label for="textArea" class="col-md-3 control-label">Text*: </label>
 
-                        <div class="col-md-10">
-                            <textarea class="form-control" rows="3" id="textArea" ng-model="ad.text"
+                        <div class="col-md-9">
+                            <textarea class="form-control" name="text" rows="3" id="textArea" ng-model="ad.text"
                                       required></textarea>
+                            <span ng-show="editAd.text.$error.required"
+                                    class="text-danger">Ad text is required!</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="img" class="col-md-2 control-label">Image: </label>
+                        <label for="img" class="col-md-3 control-label">Image: </label>
 
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <label class="filebutton">
                                 Browse
                                 <span><input type="file" id="fileInput" class="form-control"></span>
@@ -35,16 +39,16 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username" class="col-md-2 control-label">Username: </label>
+                        <label for="username" class="col-md-3 control-label">Username: </label>
 
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <input type="text" class="form-control" id="username" ng-model="ad.ownerUsername">
                         </div>
                     </div>
                     <div class="form-group" ng-controller="TownCategoryDataController">
-                        <label for="category" class="col-lg-2 control-label">Category: </label>
+                        <label for="category" class="col-lg-3 control-label">Category: </label>
 
-                        <div class="col-lg-10">
+                        <div class="col-lg-9">
                             <select class="form-control" id="category" ng-model="ad.categoryId">
                                 <option value="">-</option>
                                 <option ng-repeat="category in categories" value="{{category.id}}">
@@ -54,9 +58,9 @@
                         </div>
                     </div>
                     <div class="form-group" ng-controller="TownCategoryDataController">
-                        <label for="town" class="col-lg-2 control-label">Town: </label>
+                        <label for="town" class="col-lg-3 control-label">Town: </label>
 
-                        <div class="col-lg-10">
+                        <div class="col-lg-9">
                             <select class="form-control" id="town" ng-model="ad.townId">
                                 <option value="">-</option>
                                 <option ng-repeat="town in towns" value="{{town.id}}">
@@ -66,17 +70,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="date" class="col-md-2 control-label">Date*: </label>
+                        <label for="date" class="col-md-3 control-label">Date*: </label>
 
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <input type="date" class="form-control" id="date" name="date"
                                    ng-init="ad.date=(myDate | date:'yyyy-MM-dd')" ng-model="ad.date" required>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="status" class="col-md-2 control-label">Status*: </label>
+                        <label for="status" class="col-md-3 control-label">Status*: </label>
 
-                        <div class="col-md-10">
+                        <div class="col-md-9">
                             <select type="input" class="form-control" id="status" name="status" ng-model="ad.status">
                                 <option value="WaithingApproval">Waiting Approval</option>
                                 <option value="Rejected">Rejected</option>
@@ -97,7 +101,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-10 col-md-offset-2 col-sm-offset-2">
-                        <button type="submit" class="btn btn-primary" ng-click="edit(ad)">Edit
+                        <button type="submit" class="btn btn-primary" ng-disabled="editAd.$invalid" ng-click="edit(ad)">Edit
                         </button>
                         <button class="btn btn-default" ng-click="cancel()">Cancel</button>
                     </div>

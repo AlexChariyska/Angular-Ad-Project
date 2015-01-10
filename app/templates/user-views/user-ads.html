@@ -39,7 +39,7 @@
                             <div class="panel-body">
                                 {{ad.status}}
                             </div>
-                            <div ng-show="ad.status!=='Inactive'">
+                            <div ng-show="ad.status!=='Inactive' && ad.status!=='Rejected'">
                                 <button type="submit" class="btn btn-primary" ng-click="deactivate(ad.id)">Deactivate
                                 </button>
                             </div>
