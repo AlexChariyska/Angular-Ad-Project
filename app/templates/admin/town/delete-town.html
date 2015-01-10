@@ -3,12 +3,13 @@
     <div class="col-md-2">
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
-    <div class="col-md-6 col-md-offset-2" ng-controller="TownCategoryFunctionalityController">
-    <h3>Confirm Deleting Town?</h3>
-  		<div class="well well-sm">
+    <div class="col-md-6 col-md-offset-2 form-container" ng-controller="TownCategoryFunctionalityController">
+        <h3>Confirm Deleting Town?</h3>
+
+        <div class="well well-sm">
             <strong>Town: </strong> {{obj.name}}
         </div>
-       <button class="btn btn-default col-md-offset-4"ng-click="delete('town',obj)">Delete</button>
-	   <button class="btn btn-default" ng-click="cancel('town')">Cancel</button>
+        <button class="btn btn-default col-md-offset-4" ng-click="delete('town',obj)">Delete</button>
+        <button class="btn btn-default" ng-click="cancel('town')">Cancel</button>
     </div>
- </div>
+</div>

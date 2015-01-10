@@ -5,16 +5,16 @@
           <a href="" ng-click="clearFilter()">All</a>
         </li>
           <li>
-           <a href="" ng-click="setStatus('WaitingApproval')">Waiting Approval</a>
+           <a href="" ng-class="{selected: 'WaitingApproval' == selectedStatus}" ng-click="setStatus('WaitingApproval')">Waiting Approval</a>
         </li>
           <li>
-           <a href="" ng-click="setStatus('Published')">Published</a>
+           <a href="" ng-class="{selected: 'Published' == selectedStatus}" ng-click="setStatus('Published')">Published</a>
         </li>
         <li>
-           <a href="" ng-click="setStatus('Inactive')">Inactive</a>
+           <a href="" ng-class="{selected: 'Inactive' == selectedStatus}" ng-click="setStatus('Inactive')">Inactive</a>
         </li>
          <li>
-           <a href="" ng-click="setStatus('Rejected')">Rejected</a>
+           <a href="" ng-class="{selected: 'Rejected' == selectedStatus}" ng-click="setStatus('Rejected')">Rejected</a>
         </li>
       </ul>
 </div>

@@ -69,8 +69,10 @@ var app = angular.module('adApp', [ 'ngRoute', 'ngResource', 'ui.bootstrap'])
                     $location.path('/register');
                 } else {
                     // not going to #login, we should redirect now
+                    sessionStorage.clear();
                     $location.path("/");
                 }
             }
+            
         });
     });

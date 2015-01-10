@@ -6,7 +6,7 @@
     </div>
     <div class="container well" ng-controller="UserAdsController">
         <div class="col-md-10">
-            <ul id="ul" ng-repeat="ad in ads ">
+            <ul id="lists" ng-repeat="ad in ads ">
                 <li class="row">
                     <div class="col-md-12 clearfix">
                         <h3 class="pull-left">{{ad.title}}</h3>
@@ -24,7 +24,7 @@
                                         {{ad.text}}
                                     </div>
                                 </div>
-                     
+
                                 <div class="well well-sm">
                                     <strong>Category: </strong> {{ad.categoryName}}
                                 </div>
@@ -32,10 +32,10 @@
                                     <strong>Town: </strong> {{ad.townName}}
                                 </div>
                             </div>
-                       </div>
+                        </div>
                         <div class="col-md-3  col-sm-3 status-panel">
                             <strong>Status: </strong>
-                
+
                             <div class="panel-body">
                                 {{ad.status}}
                             </div>
@@ -44,13 +44,16 @@
                                 </button>
                             </div>
                             <div ng-show="ad.status==='Inactive'">
-                                <button type="submit" class="btn btn-primary" ng-click="redirectToEdit(ad.id)">Edit</button>
+                                <button type="submit" class="btn btn-primary" ng-click="redirectToEdit(ad.id)">Edit
+                                </button>
                                 <br/>
                                 <button type="submit" class="btn btn-primary" ng-click="publishAgain(ad.id)">Publish
                                     again
                                 </button>
                                 <br/>
-                                <button type="submit" class="btn btn-primary" ng-click="redirectToDelete(ad.id)">Delete</button>
+                                <button type="submit" class="btn btn-primary" ng-click="redirectToDelete(ad.id)">
+                                    Delete
+                                </button>
                             </div>
                         </div>
                     </div>

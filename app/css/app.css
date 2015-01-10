@@ -1,78 +1,101 @@
-.form-fieldset{
-	position: relative;
-	top:103px;
-}
-#username-nav{
-	top: 15px;
-	font-size: 16px;
-	font-weight: bold;
-	right: 30px;
-}
-.user-ad{
-widht:80%;
-} 
-
-.info{
-	width: 90%;
-	float: right;
-	display: inline-block;
-	background-color: #1C1E22;
-	padding: 5px;
+body {
+    word-wrap: break-word;
 }
 
-#ul{
-	list-style:none;
-	padding: 0 0 0 0;
+.form-fieldset {
+    position: relative;
+    top: 103px;
+}
+
+.selected {
+    background-color: #121110;
+}
+
+.form-container {
+    background-color: #3D4348;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 25px 100px;
+}
+
+#username-nav {
+    top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    right: 30px;
+}
+
+.user-ad {
+    widht: 80%;
+}
+
+.info {
+    width: 90%;
+    float: right;
+    display: inline-block;
+    background-color: #1C1E22;
+    padding: 5px;
+}
+
+#lists {
+    list-style: none;
+    padding: 0 0 0 0;
 
 }
 
-#ul li{
-background-color: #3D4248;
-border-radius: 5px;
-padding: 10px;
+#lists li {
+    background-color: #3D4248;
+    border-radius: 5px;
+    padding: 10px;
 }
 
-.pagination{
-	text-align: center;
-}
-
-.img-thumbnail{
-	width: 100%;
-	height: 100%;
-}
-#change-img,#delete-img{
-	width: 120px;
-	margin: 5px;
-}
-#ad-town, #ad-category{
-	width: 80%;
-}
-#edit, #delete{
-	width:80px;
-}
-.status-panel{
-	text-align: center;
-	position: relative;
-}
-.status-panel button{
-	width: 140px;
-	margin-bottom: 5px;
-}
-#user-navigation, #status-navigation, #admin-navigation{
-	margin-bottom: 10px;
-	text-align: center;
-}
-
-label.filebutton{
-    width:120px;
-    height:40px;
-    color:#fff;
-    overflow:hidden;
-    position:relative;
-    background-color:#272B30;
+.pagination {
     text-align: center;
-	padding: 10px;
-	border-radius: 5px;
+}
+
+.img-thumbnail {
+    width: 100%;
+    height: 100%;
+}
+
+#change-img, #delete-img {
+    width: 120px;
+    margin: 5px;
+}
+
+#ad-town, #ad-category {
+    width: 80%;
+}
+
+#edit, #delete {
+    width: 80px;
+}
+
+.status-panel {
+    text-align: center;
+    position: relative;
+}
+
+.status-panel button {
+    width: 140px;
+    margin-bottom: 5px;
+}
+
+#user-navigation, #status-navigation, #admin-navigation {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+label.filebutton {
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    background-color: #272B30;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 label span input {
@@ -83,32 +106,33 @@ label span input {
     top: -2px;
     left: -700px;
     opacity: 0;
-    filter: alpha(opacity = 0);
+    filter: alpha(opacity=0);
     -ms-filter: "alpha(opacity=0)";
     cursor: pointer;
     _cursor: hand;
     margin: 0;
-    padding:0;
+    padding: 0;
 }
 
-@media (max-width: 991px){
-	.img-thumbnail{
-		margin-bottom: 10px;
-	}
+@media (max-width: 991px) {
+    .img-thumbnail {
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 730px) {
-  .form-fieldset{
-		position: relative;
-		top:52px;
-	}
-	.status-panel{
-	  top: 0px;
-	}
+    .form-fieldset {
+        position: relative;
+        top: 52px;
+    }
+
+    .status-panel {
+        top: 0px;
+    }
 }
 
 @media (min-width: 731px) {
-	.status-panel{
-		top: -5px;
-	}
+    .status-panel {
+        top: -5px;
+    }
 }

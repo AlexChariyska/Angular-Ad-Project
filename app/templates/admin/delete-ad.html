@@ -4,69 +4,70 @@
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
     <div class="col-md-8 col-md-offset-1">
-    <h3>Confirm Deleting Ad?</h3>
-    <div class="row">
-           <div class="col-md-12 col-sm-12">
-                    <h3 class="pull-left">{{ad.title}}</h3>
-                    <date class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</date>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 col-sm-4">
-                        <div>
-                            <img src="img\300px-No_image_available.svg.png" class="img-thumbnail"
-                                 ng-src="{{ad.imageDataUrl}}">
-                        </div>
-                    </div>
-                    <div class="col-md-9 col-sm-8">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                {{ad.text}}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div>
-                                    <strong>Username: </strong>
+        <h3>Confirm Deleting Ad?</h3>
 
-                                    <div class="well well-sm">{{ad.ownerUsername}}</div>
-                                </div>
-                                <div>
-                                    <strong>Name: </strong>
-
-                                    <div class="well well-sm">{{ad.ownerName}}</div>
-                                </div>
-                                <div>
-                                    <strong>Email: </strong>
-
-                                    <div class="well well-sm">{{ad.ownerEmail}}</div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div>
-                                    <strong>Tel: </strong>
-
-                                    <div class="well well-sm">{{ad.ownerPhone}}</div>
-                                </div>
-                                <div>
-                                    <strong>Category: </strong>
-
-                                    <div class="well well-sm">{{ad.categoryName}}</div>
-                                </div>
-                                <div>
-                                    <strong>Town: </strong>
-
-                                    <div class="well well-sm"> {{ad.townName}}</div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <h3 class="pull-left">{{ad.title}}</h3>
+                <date class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</date>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-4">
+                    <div>
+                        <img src="img\300px-No_image_available.svg.png" class="img-thumbnail"
+                             ng-src="{{ad.imageDataUrl}}">
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-4 col-md-offset-3">
-                    <button type="submit" class="btn btn-primary" ng-click="delete(ad.id)">
-                        Delete
-                    </button>
-                    <button type="submit" class="btn btn-primary" ng-click="cancel()">Cancel</button>
+                <div class="col-md-9 col-sm-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            {{ad.text}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div>
+                                <strong>Username: </strong>
+
+                                <div class="well well-sm">{{ad.ownerUsername}}</div>
+                            </div>
+                            <div>
+                                <strong>Name: </strong>
+
+                                <div class="well well-sm">{{ad.ownerName}}</div>
+                            </div>
+                            <div>
+                                <strong>Email: </strong>
+
+                                <div class="well well-sm">{{ad.ownerEmail}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div>
+                                <strong>Tel: </strong>
+
+                                <div class="well well-sm">{{ad.ownerPhone}}</div>
+                            </div>
+                            <div>
+                                <strong>Category: </strong>
+
+                                <div class="well well-sm">{{ad.categoryName}}</div>
+                            </div>
+                            <div>
+                                <strong>Town: </strong>
+
+                                <div class="well well-sm"> {{ad.townName}}</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-4 col-sm-4 col-md-offset-3">
+                <button type="submit" class="btn btn-primary" ng-click="delete(ad.id)">
+                    Delete
+                </button>
+                <button type="submit" class="btn btn-primary" ng-click="cancel()">Cancel</button>
+            </div>
         </div>
+    </div>
 </div>

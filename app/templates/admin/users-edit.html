@@ -4,99 +4,113 @@
         <div data-ng-include data-src="'templates/partials/side-navigation-admin.html'"></div>
     </div>
     <div class="col-md-10" ng-controller="EditUserController">
-       	 <form class="col-md-6" name="profileForm">
-    	 	<legend>Edit Profile</legend>
-    	 	<div class="form-group">
-	            <span for="username" class="col-md-12 control-label"><strong>Username: </strong></span>
-	            <div class="col-md-12">
-	                {{user.username}}
-	            </div>
-	        </div>
-	    	 <div class="form-group">
-	            <label for="name" class="col-md-12 control-label">Name*: </label>
-	            <div class="col-md-12">
-	                <input type="text" class="form-control" id="name" name="name" ng-model="user.name" required>
+        <form class="col-md-6" name="profileForm">
+            <legend>Edit Profile</legend>
+            <div class="form-group">
+                <span for="username" class="col-md-12 control-label"><strong>Username: </strong></span>
+
+                <div class="col-md-12">
+                    {{user.username}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-md-12 control-label">Name*: </label>
+
+                <div class="col-md-12">
+                    <input type="text" class="form-control" id="name" name="name" ng-model="user.name" required>
                      <span ng-show="profileForm.name.$error.required"
-                                    class="text-danger">Please insert a name!</span>
-	            </div>
-	        </div>
-        	<div class="form-group">
-	            <label for="email" class="col-md-12 control-label">Email*: </label>
-	            <div class="col-md-12">
-	                <input type="text" class="form-control" id="email" name="email" ng-model="user.email" required>
+                           class="text-danger">Please insert a name!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-md-12 control-label">Email*: </label>
+
+                <div class="col-md-12">
+                    <input type="text" class="form-control" id="email" name="email" ng-model="user.email" required>
                          <span ng-show="profileForm.email.$error.required"
-                                    class="text-danger">Please insert an email!</span>
-	            </div>
-       	 	</div>
-   	 	 	<div class="form-group">
-	            <label for="phone" class="col-md-12 control-label">Phone*: </label>
-	            <div class="col-md-12">
-	                <input type="text" class="form-control" id="phone" name="phone" ng-model="user.phoneNumber" required>
+                               class="text-danger">Please insert an email!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phone" class="col-md-12 control-label">Phone*: </label>
+
+                <div class="col-md-12">
+                    <input type="text" class="form-control" id="phone" name="phone" ng-model="user.phoneNumber"
+                           required>
                      <span ng-show="profileForm.phone.$error.required"
-                                    class="text-danger">Please insert a phone!</span>
-	            </div>
-       	 	</div>
- 	        <div class="form-group" ng-model="user.townId">
+                           class="text-danger">Please insert a phone!</span>
+                </div>
+            </div>
+            <div class="form-group" ng-model="user.townId">
                 <label for="town" class="col-md-12 control-label">Town: </label>
+
                 <div class="col-md-12">
                     <select class="form-control" id="town" ng-controller="TownCategoryDataController">
-                        <option value="">-</option> 
+                        <option value="">-</option>
                         <option ng-repeat="town in towns" value="{{town.townId}}">
                             {{town.name}}
                         </option>
                     </select>
                 </div>
-        	</div>
-                <div class="checkbox">
-                      <label>
-                        <input type="checkbox" ng-model="user.isAdmin"> Is administrator?
-                      </label>
-                </div>
-        	 <div class="form-group">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="user.isAdmin"> Is administrator?
+                </label>
+            </div>
+            <div class="form-group">
                 <div class="col-md-12 col-sm-offset-4 col-md-offset-3">
-                    <button type="submit" class="btn btn-primary" ng-click="edit(user)" ng-disabled="profileForm.$invalid">Update</button>
+                    <button type="submit" class="btn btn-primary" ng-click="edit(user)"
+                            ng-disabled="profileForm.$invalid">Update
+                    </button>
                     <button class="btn btn-default" ng-click="reset(user)">Cancel</button>
                 </div>
             </div>
-    	  </form>
-    	  <form class="col-md-6" name="passwordForm">
-    	   <legend>Change Password</legend>
-	    	 <div class="form-group">
-	            <span for="username" class="col-md-12 control-label"><strong>Username: </strong></span>
-	            <div class="col-md-12" ng-model="user.username">
-	                {{user.username}}
-	            </div>
-	        </div>
-        	<div class="form-group">
-	            <label for="passwordNew" class="col-md-12 control-label">New password*: </label>
-	            <div class="col-md-12">
-	                <input type="password" class="form-control" id="passwordNew" name="passwordNew" minlength='2'
-                                       ng-maxlength="100" ng-model="pass.newPassword" required>
+        </form>
+        <form class="col-md-6" name="passwordForm">
+            <legend>Change Password</legend>
+            <div class="form-group">
+                <span for="username" class="col-md-12 control-label"><strong>Username: </strong></span>
+
+                <div class="col-md-12" ng-model="user.username">
+                    {{user.username}}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordNew" class="col-md-12 control-label">New password*: </label>
+
+                <div class="col-md-12">
+                    <input type="password" class="form-control" id="passwordNew" name="passwordNew" minlength='2'
+                           ng-maxlength="100" ng-model="pass.newPassword" required>
                     <span ng-show="passwordForm.passwordNew.$dirty
                                     && (passwordForm.passwordNew.$error.minlength
                                     || passwordForm.passwordNew.$error.required
                                     || passwordForm.passwordNew.$error.maxlength)"
-                                    class="text-danger">Password is required, it must be between 2 and 100 characters!</span>
-	            </div>
-       	 	</div>
-   	 	 	<div class="form-group">
-	            <label for="passwordConfirm" class="col-md-12 control-label">Confirm password*: </label>
-	            <div class="col-md-12">
-	                <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" minlength='2'
-                                       ng-maxlength="100" ng-model="pass.confirmPassword" required>
+                          class="text-danger">Password is required, it must be between 2 and 100 characters!</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="passwordConfirm" class="col-md-12 control-label">Confirm password*: </label>
+
+                <div class="col-md-12">
+                    <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm"
+                           minlength='2'
+                           ng-maxlength="100" ng-model="pass.confirmPassword" required>
                     <span ng-show="passwordForm.passwordConfirm.$dirty
                                     && (passwordForm.passwordConfirm.$error.minlength
                                     || passwordForm.passwordConfirm.$error.required
                                     || passwordForm.passwordConfirm.$error.maxlength)"
-                                        class="text-danger">Confirm password, it must be between 2 and 100 characters!</span>
-	            </div>
-       	 	</div>
-         	 <div class="form-group">
+                          class="text-danger">Confirm password, it must be between 2 and 100 characters!</span>
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-12 col-sm-offset-4 col-md-offset-2">
-                    <button type="submit" class="btn btn-primary" ng-disabled="passwordForm.$invalid" ng-click="changePassword(pass)">Change Password</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="passwordForm.$invalid"
+                            ng-click="changePassword(pass)">Change Password
+                    </button>
                     <button class="btn btn-default" ng-click="reset(pass)">Cancel</button>
                 </div>
             </div>
-    	 </form>
+        </form>
     </div>
 </div>

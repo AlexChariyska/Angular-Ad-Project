@@ -27,7 +27,7 @@
                                 && (registerForm.inputPassword.$error.maxlength 
                                 || registerForm.inputPassword.$error.mixlength
                                 || registerForm.inputPassword.$error.required)"
-                                class="text-danger">Password is required, it must be between 2 and 100 characters!</span>
+                                      class="text-danger">Password is required, it must be between 2 and 100 characters!</span>
                             </div>
                         </div>
 
@@ -37,8 +37,8 @@
                             <div class="col-md-10">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name"
                                        ng-model="credentials.name" required>
-                                <span ng-show="registerForm.name.$dirty && registerForm.name.$error.required" 
-                                class="text-danger">Name is required!
+                                <span ng-show="registerForm.name.$dirty && registerForm.name.$error.required"
+                                      class="text-danger">Name is required!
                                 </span>
                             </div>
                         </div>
@@ -48,15 +48,17 @@
                             <div class="col-md-10">
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone"
                                        ng-model="credentials.phone" required>
-                                <span ng-show="registerForm.phone.$dirty && registerForm.phone.$error.required" 
-                                class="text-danger">Phone is required!
+                                <span ng-show="registerForm.phone.$dirty && registerForm.phone.$error.required"
+                                      class="text-danger">Phone is required!
                                 </span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-12 col-md-offset-2">
-                                <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary" ng-click="register(credentials)">Register</button>
+                                <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary"
+                                        ng-click="register(credentials)">Register
+                                </button>
                                 <button class="btn btn-default" ng-click="reset()">Cancel</button>
                             </div>
                         </div>
@@ -74,7 +76,7 @@
                                     && (registerForm.confPass.$error.minlength
                                     || registerForm.confPass.$error.required
                                     || registerForm.confPass.$error.maxlength)"
-                                        class="text-danger">Confirm password, it must be between 2 and 100 characters!</span>
+                                      class="text-danger">Confirm password, it must be between 2 and 100 characters!</span>
                             </div>
                         </div>
 
@@ -85,7 +87,8 @@
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Email"
                                        ng-model="credentials.email" required>
                                 <span ng-show="registerForm.email.$dirty && (registerForm.email.$error.required 
-                                || registerForm.email.$invalid)" class="text-danger">Please, insert a valid email!</span>
+                                || registerForm.email.$invalid)"
+                                      class="text-danger">Please, insert a valid email!</span>
                             </div>
                         </div>
                         <div class="form-group" ng-controller="TownCategoryDataController">
