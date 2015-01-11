@@ -7,9 +7,9 @@
                     <fieldset class="col-md-56 col-sm-6 registration-fieldset">
                         <legend>User Registration</legend>
                         <div class="form-group">
-                            <label for="username" class="col-md-2 control-label">Username*</label>
+                            <label for="username" class="col-md-3 control-label">Username*</label>
 
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <input type="text" class="form-control" id="username" placeholder="Username"
                                        name="username" ng-model="credentials.username" required>
                                 <span ng-show="registerForm.username.$dirty && registerForm.username.$error.required"
@@ -17,9 +17,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword" class="col-md-2 control-label">Password*</label>
+                            <label for="inputPassword" class="col-md-3 control-label">Password*</label>
 
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <input type="password" class="form-control" id="inputPassword" name="inputPassword"
                                        placeholder="Password" ng-model="credentials.password" ng-minlength="2"
                                        ng-maxlength="100" required>
@@ -32,9 +32,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-2 control-label">Name*</label>
+                            <label for="name" class="col-md-3 control-label">Name*</label>
 
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Name"
                                        ng-model="credentials.name" required>
                                 <span ng-show="registerForm.name.$dirty && registerForm.name.$error.required"
@@ -43,9 +43,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="phone" class="col-md-2 control-label">Phone*</label>
+                            <label for="phone" class="col-md-3 control-label">Phone*</label>
 
-                            <div class="col-md-10">
+                            <div class="col-md-9">
                                 <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone"
                                        ng-model="credentials.phone" required>
                                 <span ng-show="registerForm.phone.$dirty && registerForm.phone.$error.required"
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-12 col-md-offset-2">
+                            <div class="col-md-12 col-md-offset-4">
                                 <button type="submit" ng-disabled="registerForm.$invalid" class="btn btn-primary"
                                         ng-click="register(credentials)">Register
                                 </button>

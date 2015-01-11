@@ -1,4 +1,4 @@
-app.controller('FormController', function FormController($scope, adsData, $resource, $http, $location, $timeout, $rootScope) {
+app.controller('FormController', function FormController($scope, $resource, $http, $location, $timeout, $rootScope, adsData) {
 
     $scope.logout = function () {
         sessionStorage.clear();
@@ -46,12 +46,12 @@ app.controller('FormController', function FormController($scope, adsData, $resou
 
             },
             function (error, status, headers, config) {
-                notyError();
+                notyError('Invalid action. Change a few things up and try submitting again!');
             });
     };
-
     $scope.register = function (credentials) {
         sessionStorage.clear();
+        credentials.townId = parseInt(credentials.townId);
         var newObj = JSON.stringify(credentials);
         var logInData = {
             'username': credentials.username,
@@ -62,7 +62,7 @@ app.controller('FormController', function FormController($scope, adsData, $resou
                 $scope.login(logInData);
             },
             function (error, status, headers, config) {
-                notyError();
+                notyError('The username is already taken!');
             });
     };
 
@@ -76,9 +76,9 @@ app.controller('FormController', function FormController($scope, adsData, $resou
             "townId": ""};
     };
 
-    function notyError() {
+    function notyError(error, status) {
         noty({
-            text: 'Invalid action. Change a few things up and try submitting again!',
+            text:error,
             layout: 'topCenter',
             closeWith: ['click', 'hover'],
             type: 'error',
